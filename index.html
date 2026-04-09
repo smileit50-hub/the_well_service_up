@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>더 웰 서비스 | 전주 프리미엄 공간 클리닝 솔루션</title>
-    <meta name="description" content="더 웰 서비스 — 전주·전북 지역 준공청소, 바닥청소, 유리청소, 외벽청소 전문. 8단계 정밀 클리닝 시스템으로 공간의 가치를 완성합니다. 무료 방문 견적 1688-8740">
+    <meta name="description"
+        content="더 웰 서비스 — 전주·전북 지역 준공청소, 바닥청소, 유리청소, 외벽청소 전문. 8단계 정밀 클리닝 시스템으로 공간의 가치를 완성합니다. 무료 방문 견적 1688-8740">
     <meta name="keywords" content="전주청소, 준공청소, 바닥청소, 유리청소, 외벽청소, 전북청소업체, 더웰서비스, 입주청소, 공간관리">
     <meta name="robots" content="index, follow">
     <meta name="author" content="더 웰 서비스">
@@ -192,14 +193,30 @@
             transform: translateY(0);
         }
 
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         .animate-float {
@@ -211,50 +228,61 @@
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 0.5rem;
         }
+
         .brand-icon-card {
             padding: 0.75rem;
             border-radius: 1rem;
         }
+
         .brand-icon-box {
             width: 2.5rem;
             height: 2.5rem;
             border-radius: 0.75rem;
             margin-bottom: 0.5rem;
         }
+
         .brand-icon-svg {
             width: 1.25rem;
             height: 1.25rem;
         }
+
         .brand-icon-title {
             font-size: 0.6875rem;
             line-height: 1.2;
         }
+
         .brand-icon-subtitle {
             display: none;
         }
+
         @media (min-width: 1024px) {
             .brand-icon-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 1.5rem;
             }
+
             .brand-icon-card {
                 padding: 2rem;
                 border-radius: 2rem;
             }
+
             .brand-icon-box {
                 width: 4rem;
                 height: 4rem;
                 border-radius: 1rem;
                 margin-bottom: 1.25rem;
             }
+
             .brand-icon-svg {
                 width: 2rem;
                 height: 2rem;
             }
+
             .brand-icon-title {
                 font-size: 1.25rem;
                 line-height: 1.4;
             }
+
             .brand-icon-subtitle {
                 display: block;
             }
@@ -294,7 +322,7 @@
                             <div className="relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center group overflow-visible">
                                 {/* High-Contrast Zen Aura */}
                                 <div className={`absolute inset-0 bg-[#065f46] rounded-full blur-2xl transition-opacity duration-1000 ${isAdmin ? 'opacity-30 mix-blend-screen' : 'opacity-0 group-hover:opacity-10'} `}></div>
-                                
+
                                 <img src="public/images/logo_transparent.png" alt="THE WELL SERVICE 로고" className="w-[110%] h-[110%] relative z-10 transition-transform duration-700 group-hover:scale-110 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]" />
                             </div>
                             <div className="flex items-center space-x-2 md:space-x-3 -ml-0.5 md:-ml-2 z-20">
@@ -317,9 +345,9 @@
 
                         {/* Mobile Hamburger Button */}
                         <button onClick={toggleMenu} className="md:hidden w-10 h-10 flex flex-col items-center justify-center space-y-1.5 focus:outline-none z-[110]" aria-label="메뉴 열기">
-                                <span className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                                <span className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-                                <span className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                            <span className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                            <span className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+                            <span className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
                         </button>
                     </div>
                     {/* 모바일 오버레이는 헤더 밖(App 레벨)에서 렌더링됩니다. */}
@@ -327,7 +355,7 @@
             );
         };
 
-        {/* 모바일 메뉴 오버레이: backdrop-blur 스태킹 컨텍스트 버그 방지를 위해 헤더 외부에서 독립 렌더링 */}
+        {/* 모바일 메뉴 오버레이: backdrop-blur 스태킹 컨텍스트 버그 방지를 위해 헤더 외부에서 독립 렌더링 */ }
         const MobileMenuOverlay = ({ isMenuOpen, setIsMenuOpen, onNavigate }) => {
             const handleNav = (hash) => {
                 onNavigate(hash);
@@ -505,9 +533,9 @@
             };
 
             const handleDeleteRequest = (r) => {
-                if (isAdmin) { 
+                if (isAdmin) {
                     setPromptState({ show: true, action: 'admin_delete', review: r, pin: '', error: '' });
-                    return; 
+                    return;
                 }
                 setPromptState({ show: true, action: 'delete', review: r, pin: '', error: '' });
             };
@@ -516,14 +544,14 @@
                 e.preventDefault();
                 const action = promptState.action;
                 const review = promptState.review;
-                
+
                 if (action !== 'admin_delete' && promptState.pin !== review.password) {
                     setPromptState(prev => ({ ...prev, error: '비밀번호가 일치하지 않습니다.' }));
                     return;
                 }
-                
+
                 setPromptState({ show: false, action: null, review: null, pin: '', error: '' });
-                
+
                 if (action === 'edit') openEdit(review);
                 else handleDelete(review.id);
             };
@@ -549,7 +577,7 @@
                                             ? <span className="inline-block px-2 py-0.5 rounded-full bg-[#ecfdf5] text-[#065f46] text-[9px] font-black tracking-wider uppercase border border-[#10b981]/20">고객 후기</span>
                                             : <span></span>
                                         }
-                                        { (isAdmin || r.isUser) && (
+                                        {(isAdmin || r.isUser) && (
                                             <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10">
                                                 <button onClick={(e) => { e.stopPropagation(); handleEditRequest(r); }} className="w-7 h-7 flex items-center justify-center rounded-lg bg-gray-100 text-gray-400 hover:bg-[#ecfdf5] hover:text-[#065f46] transition-all" title="수정">
                                                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
@@ -624,20 +652,20 @@
                                         <div className="grid grid-cols-2 gap-4">
                                             <div>
                                                 <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">이름 *</label>
-                                                <input value={form.name} onChange={e => setForm(f => ({...f, name: e.target.value}))} required placeholder="예) 홍*동 담당자" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
+                                                <input value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required placeholder="예) 홍*동 담당자" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
                                             </div>
                                             <div>
                                                 <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">소속/직함</label>
-                                                <input value={form.company} onChange={e => setForm(f => ({...f, company: e.target.value}))} placeholder="예) ㅇㅇ기업" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
+                                                <input value={form.company} onChange={e => setForm(f => ({ ...f, company: e.target.value }))} placeholder="예) ㅇㅇ기업" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
                                             </div>
                                         </div>
                                         <div>
                                             <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">비밀번호 {editingId ? '' : '*'}</label>
-                                            <input type="password" value={form.password} onChange={e => setForm(f => ({...f, password: e.target.value}))} required={!editingId} placeholder="수정/삭제 시 필요한 4자리 숫자" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
+                                            <input type="password" value={form.password} onChange={e => setForm(f => ({ ...f, password: e.target.value }))} required={!editingId} placeholder="수정/삭제 시 필요한 4자리 숫자" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
                                         </div>
                                         <div>
                                             <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">후기 내용 *</label>
-                                            <textarea value={form.text} onChange={e => setForm(f => ({...f, text: e.target.value}))} required rows="4" placeholder="서비스를 이용하신 경험을 자유롭게 작성해 주세요." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all resize-none" />
+                                            <textarea value={form.text} onChange={e => setForm(f => ({ ...f, text: e.target.value }))} required rows="4" placeholder="서비스를 이용하신 경험을 자유롭게 작성해 주세요." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all resize-none" />
                                         </div>
                                         <button type="submit" className="w-full py-4 rounded-xl glossy-green text-white font-black text-sm tracking-wide shadow-lg hover:shadow-green-200 transition-all">{editingId ? '수정 저장' : '등록하기'}</button>
                                     </form>
@@ -667,7 +695,7 @@
                                 <form onSubmit={handlePromptSubmit} className="space-y-4">
                                     {promptState.error && <p className="text-red-500 text-sm font-bold text-center">{promptState.error}</p>}
                                     {promptState.action !== 'admin_delete' && (
-                                        <input type="password" value={promptState.pin} onChange={e => setPromptState(prev => ({...prev, pin: e.target.value, error: ''}))} autoFocus required placeholder="비밀번호" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-center tracking-widest text-lg font-bold focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
+                                        <input type="password" value={promptState.pin} onChange={e => setPromptState(prev => ({ ...prev, pin: e.target.value, error: '' }))} autoFocus required placeholder="비밀번호" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-center tracking-widest text-lg font-bold focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
                                     )}
                                     <button type="submit" disabled={promptState.action !== 'admin_delete' && !promptState.pin} className={`w-full py-4 rounded-xl text-white font-black text-sm tracking-wide shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed ${promptState.action === 'edit' ? 'glossy-green hover:shadow-green-200' : 'bg-red-500 hover:bg-red-600 hover:shadow-red-200'}`}>{promptState.action === 'edit' ? '확인' : '삭제하기'}</button>
                                 </form>
@@ -744,7 +772,7 @@
             const handleFileChange = async (e) => {
                 const file = e.target.files && e.target.files[0];
                 if (!file || uploadingIdx === null) return;
-                
+
                 showToast('이미지 최적화 중...', 'info');
                 try {
                     const base64 = await compressSystemImage(file);
@@ -752,8 +780,8 @@
                     updated[uploadingIdx] = base64;
                     setStepImages(updated);
                     localStorage.setItem('wellservice_step8_images_v2', JSON.stringify(updated));
-                    showToast(`STEP ${String(uploadingIdx + 1).padStart(2,'0')} 이미지가 변경되었습니다.`);
-                } catch(err) {
+                    showToast(`STEP ${String(uploadingIdx + 1).padStart(2, '0')} 이미지가 변경되었습니다.`);
+                } catch (err) {
                     showToast('이미지 저장 중 오류가 발생했습니다.', 'error');
                 } finally {
                     setUploadingIdx(null);
@@ -766,8 +794,8 @@
                 const updated = [...stepImages];
                 updated[idx] = defaultImages[idx];
                 setStepImages(updated);
-                try { localStorage.setItem('wellservice_step8_images_v2', JSON.stringify(updated)); } catch {}
-                showToast(`STEP ${String(idx + 1).padStart(2,'0')} 이미지가 초기화되었습니다.`);
+                try { localStorage.setItem('wellservice_step8_images_v2', JSON.stringify(updated)); } catch { }
+                showToast(`STEP ${String(idx + 1).padStart(2, '0')} 이미지가 초기화되었습니다.`);
             };
 
             const handleResetAll = () => {
@@ -818,27 +846,27 @@
                             <p className="text-lg md:text-xl text-gray-500 font-medium break-keep opacity-90">'위에서 아래로, 안에서 밖으로' 흐르는 체계적인 데이터 기반 작업</p>
 
                             {isAdmin && (
-                            <div className="flex items-center justify-center gap-3 mt-8">
-                                <button
-                                    onClick={() => setEditMode(prev => !prev)}
-                                    className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 shadow-md border ${editMode ? 'bg-[#065f46] text-white border-[#065f46] shadow-[#065f46]/30' : 'bg-white text-gray-500 border-gray-200 hover:border-[#10b981] hover:text-[#10b981]'}`}
-                                >
-                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg>
-                                    {editMode ? '편집 모드 종료' : '이미지 편집 모드'}
-                                </button>
-                                {editMode && (
+                                <div className="flex items-center justify-center gap-3 mt-8">
                                     <button
-                                        onClick={handleResetAll}
-                                        className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-white text-red-400 border border-red-200 hover:bg-red-50 hover:border-red-400 transition-all duration-300 shadow-md"
+                                        onClick={() => setEditMode(prev => !prev)}
+                                        className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 shadow-md border ${editMode ? 'bg-[#065f46] text-white border-[#065f46] shadow-[#065f46]/30' : 'bg-white text-gray-500 border-gray-200 hover:border-[#10b981] hover:text-[#10b981]'}`}
                                     >
-                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-                                        전체 초기화
+                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                        {editMode ? '편집 모드 종료' : '이미지 편집 모드'}
                                     </button>
-                                )}
-                            </div>
+                                    {editMode && (
+                                        <button
+                                            onClick={handleResetAll}
+                                            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-white text-red-400 border border-red-200 hover:bg-red-50 hover:border-red-400 transition-all duration-300 shadow-md"
+                                        >
+                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                                            전체 초기화
+                                        </button>
+                                    )}
+                                </div>
                             )}
                             {isAdmin && editMode && (
                                 <div className="mt-4 inline-flex items-center gap-2 bg-[#10b981]/10 border border-[#10b981]/30 text-[#065f46] font-bold text-xs px-5 py-2.5 rounded-full">
@@ -1059,13 +1087,13 @@
                     emailjs.init("jz_b-sfhwOdr3sERj");
                 }
             }, []);
-            
+
             const toggleService = (id) => {
                 setSelectedServices(prev =>
                     prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]
                 );
             };
-            
+
             const handleFileChange = (e) => {
                 if (e.target.files) {
                     const newFiles = Array.from(e.target.files).map(f => ({
@@ -1115,16 +1143,16 @@
                 try {
                     // ✅ EmailJS를 통한 실제 메일 전송
                     await emailjs.send('naver_service', 'template_p232fz5', templateParams);
-                    
+
                     setSubmitStatus('SUCCESS');
-                    
+
                     // 초기화
                     setSelectedServices([]);
                     setFiles([]);
                     setName('');
                     setPhone('');
                     setMessage('');
-                    
+
                     files.forEach(f => {
                         if (f.preview) URL.revokeObjectURL(f.preview);
                     });
@@ -1145,13 +1173,13 @@
                 { id: '유리청소', label: '유리 청소', icon: <React.Fragment><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" /><path d="M4 10H20M10 4V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><path d="M15 7L18 10M6 14L10 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="opacity-40" /><path d="M14 14L16 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></React.Fragment> },
                 { id: '외벽청소', label: '외벽 청소', icon: <path d="M4 21V3H14V21M14 7H20V21M7 7H11M7 11H11M7 15H11M17 11H18M17 15H18M2 21H22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /> },
             ];
-            
+
             return (
                 <section id="quote" className="py-16 md:py-24 bg-white relative overflow-hidden">
                     <div className="absolute top-1/4 -right-20 w-80 h-80 bg-[#10b981]/5 rounded-full blur-[100px]"></div><div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-[#10b981]/5 rounded-full blur-[100px]"></div>
                     <div className="max-w-4xl mx-auto px-6 relative">
                         <div className="bg-white rounded-[2.5rem] md:rounded-[3rem] p-4 sm:p-10 md:p-16 shadow-[0_30px_80px_rgb(0,0,0,0.10)] border border-gray-200 ring-1 ring-gray-100 min-h-[400px] flex flex-col justify-center">
-                            
+
                             {submitStatus === 'SUCCESS' ? (
                                 <div className="text-center py-10 animate-luxury-fade">
                                     <div className="w-20 h-20 bg-[#ecfdf5] text-[#10b981] rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner animate-luxury-slide">
@@ -1159,7 +1187,7 @@
                                     </div>
                                     <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">견적 신청 완료</h2>
                                     <p className="text-gray-500 font-medium text-lg mb-10 break-keep">정상적으로 접수되었습니다.<br />전문 상담사가 확인 후 빠르게 연락드리겠습니다.</p>
-                                    <button 
+                                    <button
                                         onClick={() => setSubmitStatus('IDLE')}
                                         className="px-10 py-4 bg-[#065f46] text-white rounded-2xl font-black text-sm tracking-widest hover:bg-[#10b981] transition-all transform hover:scale-105 active:scale-95 shadow-xl"
                                     >
@@ -1209,11 +1237,11 @@
                                             <div className="relative group"><input type="tel" required value={phone} onChange={e => setPhone(e.target.value)} className="peer w-full bg-transparent border-b-2 border-gray-200 py-3 px-1 focus:outline-none focus:border-[#10b981] transition-colors placeholder-transparent text-sm md:text-base" id="phone" placeholder="연락처" /><label htmlFor="phone" className="absolute left-1 top-3 text-gray-400 font-medium transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:-translate-y-6 peer-focus:text-[#10b981] peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-6 text-sm md:text-base">연락처</label></div>
                                         </div>
                                         <div className="relative group"><textarea rows="3" value={message} onChange={e => setMessage(e.target.value)} className="peer w-full bg-transparent border-b-2 border-gray-200 py-3 px-1 focus:outline-none focus:border-[#10b981] transition-colors placeholder-transparent resize-none text-sm md:text-base" id="message" placeholder="문의 내용"></textarea><label htmlFor="message" className="absolute left-1 top-3 text-gray-400 font-medium transition-all duration-300 pointer-events-none peer-focus:text-xs peer-focus:-translate-y-6 peer-focus:text-[#10b981] peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-6 text-sm md:text-base">문의 내용 (평수, 특이사항 등)</label></div>
-                                        
+
                                         <div className="space-y-4 pt-2 md:pt-4">
                                             <label className="text-xs md:text-sm font-bold text-gray-400 uppercase tracking-widest ml-1">현장 사진 첨부 (선택)</label>
                                             <input type="file" multiple accept="image/*" onChange={handleFileChange} className="hidden" id="photo-upload" />
-                                            
+
                                             {files.length === 0 ? (
                                                 <label htmlFor="photo-upload" className="flex flex-col items-center justify-center w-full py-8 md:py-12 border-2 border-dashed border-gray-200 rounded-3xl bg-gray-50/50 hover:bg-white hover:border-[#10b981] transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-3 md:mb-4 group-hover:scale-110 group-hover:bg-[#10b981] group-hover:text-white transition-all duration-500">
@@ -1239,7 +1267,7 @@
                                                             </div>
                                                         </div>
                                                     ))}
-                                                    
+
                                                     <label htmlFor="photo-upload" className="flex flex-col items-center justify-center aspect-square border-2 border-dashed border-gray-200 rounded-2xl md:rounded-3xl bg-gray-50/50 hover:bg-white hover:border-[#10b981] transition-all duration-300 cursor-pointer group">
                                                         <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-sm flex items-center justify-center mb-2 md:mb-3 group-hover:scale-110 group-hover:bg-[#10b981] group-hover:text-white transition-all duration-300">
                                                             <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4" /></svg>
@@ -1386,10 +1414,10 @@
 
         const BoardPage = ({ category, onBack, isAdmin }) => {
             const readableCategory = category ? category.replace('-', ' ') : '알 수 없음';
-            
+
             // Initial Seed Data
             const seedPosts = useMemo(() => [
-                { 
+                {
                     id: 1, category: '준공-청소', title: `[준공 청소] 첫 번째 프리미엄 현장`, content: `더 웰 서비스만의 독보적인 8단계 세척 시스템을 적용한 대표 사례입니다. 대형 창호와 특수 바닥재의 오염을 완벽하게 제거하여 본래의 광택을 되찾아드렸습니다. 상세 리포트에서 작업 전후의 놀라운 변화를 확인하세요.`, date: '2026.03.20', img: 'public/images/port-main-1.jpg',
                     detail: {
                         before: [{ url: 'public/images/port-main-1.jpg', posX: 50, posY: 50 }],
@@ -1397,7 +1425,7 @@
                         after: [{ url: 'https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&q=80&w=1200', posX: 50, posY: 50 }]
                     }
                 },
-                { 
+                {
                     id: 2, category: '바닥-청소', title: `[바닥 청소] 두 번째 디테일 작업 완료`, content: `정밀 바닥 세척과 왁스 코팅을 통해 공간의 위생 등급을 한 차원 높인 현장입니다. 특수 장비를 활용하여 찌든 때를 뿌리까지 제거했습니다.`, date: '2026.03.15', img: 'public/images/port-main-2.jpg',
                     detail: {
                         before: [{ url: 'public/images/port-main-2.jpg', posX: 50, posY: 50 }],
@@ -1416,7 +1444,7 @@
 
             // Category Filtered Posts
             const posts = useMemo(() => allPosts.filter(p => !category || p.category === category), [allPosts, category]);
-            
+
             const [activeIndex, setActiveIndex] = useState(0);
             const [viewMode, setViewMode] = useState('LIST');
             const [stage, setStage] = useState('after');
@@ -1426,8 +1454,8 @@
 
             const activePost = posts[activeIndex];
             const currentDetailImages = activePost && activePost.detail && activePost.detail[stage] ? activePost.detail[stage] : [];
-            const activeImg = (viewMode === 'DETAIL' && currentDetailImages[imgIndex]) 
-                ? currentDetailImages[imgIndex] 
+            const activeImg = (viewMode === 'DETAIL' && currentDetailImages[imgIndex])
+                ? currentDetailImages[imgIndex]
                 : (activePost ? { url: activePost.img, posX: 50, posY: 50 } : null);
 
             const saveAll = (updated) => {
@@ -1479,7 +1507,7 @@
                 if (stageType === 'main') setFilesData(prev => ({ ...prev, main: converted[0] }));
                 else setFilesData(prev => ({ ...prev, [stageType]: [...prev[stageType], ...converted] }));
             };
-            
+
             const handleUpload = async (e) => {
                 e.preventDefault();
                 if (!formData.title.trim()) return;
@@ -1513,11 +1541,11 @@
 
             return (
                 <div className="pt-28 pb-32 min-h-screen bg-gray-50 font-sans animate-in fade-in slide-in-from-bottom-12 duration-[1500ms] ease-out">
-                    
+
                     {/* 통합 플로팅 뒤로가기 버튼 */}
                     <div className="fixed top-24 left-6 md:left-12 z-[90] animate-in slide-in-from-left-10 duration-500">
-                        <button 
-                            onClick={viewMode === 'DETAIL' ? () => setViewMode('LIST') : onBack} 
+                        <button
+                            onClick={viewMode === 'DETAIL' ? () => setViewMode('LIST') : onBack}
                             className="group flex items-center bg-white/90 backdrop-blur-md border border-gray-100 p-2 md:pr-6 rounded-full shadow-2xl hover:bg-[#10b981] hover:text-white transition-all transform hover:scale-105 active:scale-95"
                         >
                             <div className="w-10 h-10 md:w-12 md:h-12 bg-[#10b981] group-hover:bg-white text-white group-hover:text-[#10b981] rounded-full flex items-center justify-center transition-colors shadow-lg">
@@ -1545,19 +1573,19 @@
                                 </button>
                             )}
                         </div>
-                        
+
                         {posts.length > 0 && activePost ? (
                             <div className="bg-white rounded-[2.5rem] shadow-[0_12px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col lg:flex-row h-auto lg:min-h-[650px] relative group animate-in fade-in zoom-in-95 duration-500">
-                                
+
                                 {/* 1. 큰 이미지 영역 */}
                                 <div className={`w-full lg:w-[60%] min-h-[400px] lg:h-auto relative overflow-hidden bg-gray-900 flex-shrink-0 group/slider ${viewMode === 'LIST' ? 'cursor-pointer' : ''}`} onClick={viewMode === 'LIST' ? openProjectDetail : null}>
-                                    <div 
-                                        className="absolute inset-0 w-full h-full transition-all duration-1000 group-hover/slider:scale-[1.05]" 
-                                        style={{ 
-                                            backgroundImage: `url(${activeImg ? activeImg.url : activePost.img})`, 
-                                            backgroundSize: 'cover', 
+                                    <div
+                                        className="absolute inset-0 w-full h-full transition-all duration-1000 group-hover/slider:scale-[1.05]"
+                                        style={{
+                                            backgroundImage: `url(${activeImg ? activeImg.url : activePost.img})`,
+                                            backgroundSize: 'cover',
                                             backgroundPosition: viewMode === 'DETAIL' ? `${activeImg.posX}% ${activeImg.posY}%` : 'center'
-                                        }} 
+                                        }}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/slider:opacity-100 transition-opacity"></div>
 
@@ -1577,11 +1605,11 @@
                                         </React.Fragment>
                                     )}
                                 </div>
-                                
+
                                 {/* 2. 우측 패널 */}
                                 <div className="w-full lg:w-[40%] flex flex-col bg-white relative">
                                     <div className="p-10 lg:p-12 flex-grow overflow-y-auto custom-scrollbar active-info-scroll border-b border-gray-50">
-                                        
+
                                         <div className={`flex justify-between items-center mb-8 ${viewMode === 'DETAIL' ? 'sticky top-0 bg-white/95 backdrop-blur-sm z-30 py-2 -mx-4 px-4' : ''}`}>
                                             <div className="flex items-center gap-3">
                                                 <span className="bg-gray-100 text-gray-500 font-extrabold text-[10px] px-3 py-1 rounded-md tracking-widest uppercase">
@@ -1604,7 +1632,7 @@
                                         {viewMode === 'DETAIL' && (
                                             <div className="flex bg-gray-50 p-1.5 rounded-2xl mb-8 sticky top-[60px] z-20 shadow-sm border border-gray-100">
                                                 {['before', 'during', 'after'].map(s => (
-                                                    <button key={s} onClick={() => {setStage(s); setImgIndex(0);}} className={`flex-1 py-3 rounded-xl font-black text-xs transition-all ${stage === s ? 'bg-[#10b981] text-white shadow-lg' : 'text-gray-400 hover:text-gray-600'}`}>
+                                                    <button key={s} onClick={() => { setStage(s); setImgIndex(0); }} className={`flex-1 py-3 rounded-xl font-black text-xs transition-all ${stage === s ? 'bg-[#10b981] text-white shadow-lg' : 'text-gray-400 hover:text-gray-600'}`}>
                                                         {s === 'before' ? '작업 전' : s === 'during' ? '작업 중' : '작업 후'}
                                                     </button>
                                                 ))}
@@ -1615,7 +1643,7 @@
                                         <div className="w-12 h-1.5 bg-[#10b981] mb-8 rounded-full"></div>
                                         <p className="text-lg text-gray-600 leading-relaxed font-semibold break-keep whitespace-pre-wrap">{activePost.content}</p>
                                     </div>
-                                    
+
                                     {/* 3. 하단 패널 */}
                                     <div className="h-40 lg:h-44 bg-gray-50/50 p-6 flex space-x-5 items-center overflow-x-auto custom-scrollbar">
                                         {viewMode === 'LIST' ? (
@@ -1645,7 +1673,7 @@
                                 {isAdmin && <button onClick={() => setIsModalOpen(true)} className="mt-6 px-8 py-3 bg-[#10b981] text-white rounded-xl font-bold text-sm hover:bg-[#065f46] transition-colors">첫 번째 갤러리 업로드</button>}
                             </div>
                         )}
-                        
+
                     </div>
 
                     {/* ─── Portfolio Upload Modal ─────────────────────────────── */}
@@ -1671,7 +1699,7 @@
                                             <input
                                                 type="text" required
                                                 value={formData.title}
-                                                onChange={e => setFormData(f => ({...f, title: e.target.value}))}
+                                                onChange={e => setFormData(f => ({ ...f, title: e.target.value }))}
                                                 placeholder="예) [준공청소] 전주 ◯◯아파트 입주 전 클리닝"
                                                 className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all"
                                             />
@@ -1680,7 +1708,7 @@
                                             <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">현장 설명</label>
                                             <textarea
                                                 value={formData.content}
-                                                onChange={e => setFormData(f => ({...f, content: e.target.value}))}
+                                                onChange={e => setFormData(f => ({ ...f, content: e.target.value }))}
                                                 rows="3"
                                                 placeholder="현장 특이사항, 적용 공정, 작업 결과 등을 설명해주세요."
                                                 className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all resize-none"
@@ -1695,7 +1723,7 @@
                                         {filesData.main ? (
                                             <div className="relative w-full h-48 rounded-2xl overflow-hidden border border-gray-100">
                                                 <img src={filesData.main.url} className="w-full h-full object-cover" alt="thumbnail" />
-                                                <button type="button" onClick={() => setFilesData(p => ({...p, main: null}))} className="absolute top-3 right-3 w-8 h-8 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-red-500 transition-colors">
+                                                <button type="button" onClick={() => setFilesData(p => ({ ...p, main: null }))} className="absolute top-3 right-3 w-8 h-8 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-red-500 transition-colors">
                                                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
                                                 </button>
                                             </div>
@@ -1718,7 +1746,7 @@
                                                 {filesData[stg].map((f, idx) => (
                                                     <div key={idx} className="relative w-24 h-24 rounded-xl overflow-hidden border border-gray-100 flex-shrink-0">
                                                         <img src={f.url} className="w-full h-full object-cover" alt={`${stg}-${idx}`} />
-                                                        <button type="button" onClick={() => setFilesData(p => ({...p, [stg]: p[stg].filter((_,i) => i !== idx)}))} className="absolute top-1 right-1 w-5 h-5 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-red-500 transition-colors text-[10px]">
+                                                        <button type="button" onClick={() => setFilesData(p => ({ ...p, [stg]: p[stg].filter((_, i) => i !== idx) }))} className="absolute top-1 right-1 w-5 h-5 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-red-500 transition-colors text-[10px]">
                                                             ✕
                                                         </button>
                                                     </div>
@@ -1736,7 +1764,7 @@
                                         <button type="submit" disabled={isUploading || !formData.title.trim()} className="w-full py-4 rounded-xl glossy-green text-white font-black text-sm tracking-wide shadow-lg hover:shadow-green-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                                             {isUploading ? (
                                                 <React.Fragment>
-                                                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+                                                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
                                                     저장 중...
                                                 </React.Fragment>
                                             ) : (
@@ -1755,13 +1783,13 @@
                 </div>
             );
         };
-// --- END UNIVERSAL FLOATING BACK BUTTON ---
+        // --- END UNIVERSAL FLOATING BACK BUTTON ---
 
-// --- END PORTFOLIO UI ENHANCEMENT ---
+        // --- END PORTFOLIO UI ENHANCEMENT ---
 
-// --- END CLEAN PORTFOLIO UI ---
+        // --- END CLEAN PORTFOLIO UI ---
 
-// --- END TWO-STEP PORTFOLIO LOGIC ---
+        // --- END TWO-STEP PORTFOLIO LOGIC ---
 
 
 
@@ -1827,7 +1855,7 @@
                             >
                                 {loading ? (
                                     <React.Fragment>
-                                        <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+                                        <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
                                         확인 중...
                                     </React.Fragment>
                                 ) : '관리자 모드 접속'}
@@ -1861,7 +1889,7 @@
                     setError('새 비밀번호와 확인이 일치하지 않습니다.');
                     return;
                 }
-                
+
                 localStorage.setItem('wellservice_admin_pwd', newPw);
                 setSuccess(true);
                 setTimeout(() => {
@@ -1875,7 +1903,7 @@
                         <button onClick={onClose} className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors">
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
                         </button>
-                        
+
                         <div className="text-center mb-8">
                             <div className="w-16 h-16 bg-[#065f46] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                                 <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -1903,9 +1931,9 @@
                         ) : (
                             <form onSubmit={handlePasswordChange} className="space-y-4 animate-luxury-fade">
                                 <div className="space-y-3">
-                                    <input type="password" value={currentPw} onChange={e=>setCurrentPw(e.target.value)} placeholder="현재 비밀번호" required className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:bg-white focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
-                                    <input type="password" value={newPw} onChange={e=>setNewPw(e.target.value)} placeholder="새 비밀번호" required minLength={4} className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:bg-white focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
-                                    <input type="password" value={confirmPw} onChange={e=>setConfirmPw(e.target.value)} placeholder="새 비밀번호 확인" required minLength={4} className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:bg-white focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
+                                    <input type="password" value={currentPw} onChange={e => setCurrentPw(e.target.value)} placeholder="현재 비밀번호" required className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:bg-white focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
+                                    <input type="password" value={newPw} onChange={e => setNewPw(e.target.value)} placeholder="새 비밀번호" required minLength={4} className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:bg-white focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
+                                    <input type="password" value={confirmPw} onChange={e => setConfirmPw(e.target.value)} placeholder="새 비밀번호 확인" required minLength={4} className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:bg-white focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all" />
                                 </div>
                                 {error && <p className="text-red-500 text-xs font-bold text-center animate-pulse">{error}</p>}
                                 <div className="flex gap-2 pt-2">
@@ -2027,7 +2055,7 @@
                                 <div className="space-y-4">
                                     <h5 className="text-gray-400 font-black text-[10px] uppercase tracking-widest border-b border-white/5 pb-2 mb-4 inline-block">Location</h5>
                                     <p className="text-gray-400 font-medium break-keep leading-relaxed max-w-[240px] mx-auto">
-                                        전북특별자치도 전주시 완산구<br />구사평 3길 13-8 1층(서신동)
+                                        전북특별자치도 전주시 완산구<br />고사평 3길 13-8 1층(서신동)
                                     </p>
                                 </div>
                                 <div className="space-y-4">

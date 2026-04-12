@@ -401,7 +401,7 @@
         };
 
         {/* 모바일 메뉴 오버레이: backdrop-blur 스태킹 컨텍스트 버그 방지를 위해 헤더 외부에서 독립 렌더링 */ }
-        const MobileMenuOverlay = ({ isMenuOpen, setIsMenuOpen, onNavigate }) => {
+        const MobileMenuOverlay = ({ isMenuOpen, setIsMenuOpen, onNavigate, bizInfo }) => {
             const handleNav = (hash) => {
                 onNavigate(hash);
                 setIsMenuOpen(false);
@@ -418,9 +418,9 @@
                         <a onClick={() => handleNav('#reviews')} className="text-2xl font-black text-gray-900 border-b-2 border-transparent hover:border-[#10b981] transition-all cursor-pointer">고객 후기</a>
                         <a onClick={() => handleNav('#quote')} className="text-2xl font-black text-gray-900 border-b-2 border-transparent hover:border-[#10b981] transition-all cursor-pointer">무료 견적 신청</a>
                         <div className="pt-8">
-                            <a href="tel:16888740" className="flex items-center space-x-3 text-[#10b981] font-black text-xl bg-[#ecfdf5] px-8 py-4 rounded-2xl shadow-md">
+                            <a href={`tel:${bizInfo.phone.replace(/[^0-9]/g, '')}`} className="flex items-center space-x-3 text-[#10b981] font-black text-xl bg-[#ecfdf5] px-8 py-4 rounded-2xl shadow-md">
                                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                                <span>1688-8740</span>
+                                <span>{bizInfo.phone}</span>
                             </a>
                         </div>
                     </div>
@@ -542,6 +542,7 @@
 
             const [page, setPage] = React.useState(0);
             const [showForm, setShowForm] = React.useState(false);
+            const [showLookup, setShowLookup] = React.useState(false);
             const [selectedDetail, setSelectedDetail] = React.useState(null);
             const [submitted, setSubmitted] = React.useState(false);
             const [editingId, setEditingId] = React.useState(null);
@@ -556,6 +557,7 @@
                 } catch { return seed; }
             });
             const [form, setForm] = React.useState({ name: '', company: '', text: '', password: '', rating: 5 });
+            const [lookupForm, setLookupForm] = React.useState({ name: '', password: '', error: '' });
             const [promptState, setPromptState] = React.useState({ show: false, action: null, review: null, pin: '', error: '' });
 
             const perPage = 5;
@@ -572,6 +574,21 @@
             const closeForm = () => { setShowForm(false); setSubmitted(false); setEditingId(null); };
             const openDetail = (r) => { setSelectedDetail(r); };
             const closeDetail = () => { setSelectedDetail(null); };
+
+            const handleLookup = (e) => {
+                e.preventDefault();
+                const match = reviews.find(r => 
+                    r.name.trim() === lookupForm.name.trim() && 
+                    String(r.password) === String(lookupForm.password)
+                );
+                if (match) {
+                    setLookupForm({ name: '', password: '', error: '' });
+                    setShowLookup(false);
+                    setSelectedDetail(match);
+                } else {
+                    setLookupForm(prev => ({ ...prev, error: '정보와 일치하는 후기를 찾을 수 없습니다.' }));
+                }
+            };
 
             const handleSubmit = (e) => {
                 e.preventDefault();
@@ -630,6 +647,15 @@
                 else handleDelete(review.id);
             };
 
+            const maskName = (name) => {
+                if (!name) return "";
+                const clean = name.trim();
+                if (clean.length <= 1) return clean;
+                if (clean.length === 2) return clean[0] + "*";
+                // 3글자 이상인 경우 가운데를 모두 별처리 (예: 홍길동 -> 홍*동, 남궁민수 -> 남**수)
+                return clean[0] + "*".repeat(clean.length - 2) + clean[clean.length - 1];
+            };
+
 
             return (
                 <section id="reviews" className="py-16 md:py-24 bg-[#F8F9FA] relative">
@@ -648,10 +674,16 @@
                         {/* Search/Filter/Actions Area */}
                         <div className="flex justify-between items-center mb-6">
                             <div className="text-sm font-bold text-gray-400">Total <span className="text-[#10b981]">{reviews.length}</span></div>
-                            <button onClick={openNew} className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#065f46] text-white font-black text-sm hover:translate-y-[-2px] hover:shadow-lg transition-all duration-300">
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 4v16m8-8H4" /></svg>
-                                후기 작성하기
-                            </button>
+                            <div className="flex gap-2">
+                                <button onClick={() => setShowLookup(true)} className="flex items-center gap-2 px-5 py-2.5 rounded-xl border-2 border-gray-200 text-gray-400 font-black text-sm hover:border-[#10b981] hover:text-[#10b981] transition-all duration-300">
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                                    내 후기 찾기
+                                </button>
+                                <button onClick={openNew} className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#065f46] text-white font-black text-sm hover:translate-y-[-2px] shadow-sm hover:shadow-lg transition-all duration-300">
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 4v16m8-8H4" /></svg>
+                                    후기 작성하기
+                                </button>
+                            </div>
                         </div>
 
                         {/* List View */}
@@ -684,7 +716,7 @@
                                                 </div>
                                             </td>
                                             <td className="px-6 py-5">
-                                                <span className="text-gray-500 font-bold text-xs md:text-sm">{r.name}</span>
+                                                <span className="text-gray-500 font-bold text-xs md:text-sm">{maskName(r.name)}</span>
                                             </td>
                                             <td className="px-6 py-5 text-center">
                                                 <span className="text-gray-400 font-bold text-[11px]">{r.date || '2024.01.01'}</span>
@@ -747,7 +779,7 @@
                                                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" /></svg>
                                             </div>
                                             <div>
-                                                <p className="font-black text-gray-900 leading-none mb-1">{selectedDetail.name}</p>
+                                                <p className="font-black text-gray-900 leading-none mb-1">{maskName(selectedDetail.name)}</p>
                                                 <p className="text-gray-400 text-[11px] font-bold tracking-tight">{selectedDetail.company}</p>
                                             </div>
                                         </div>
@@ -842,6 +874,36 @@
                                         <input type="password" value={promptState.pin} onChange={e => setPromptState(prev => ({ ...prev, pin: e.target.value, error: '' }))} autoFocus required maxLength="4" placeholder="••••" className="w-full px-4 py-4 rounded-xl border border-gray-100 bg-gray-50 text-center tracking-[1em] text-xl font-black focus:outline-none focus:bg-white focus:border-gray-900 transition-all" />
                                     )}
                                     <button type="submit" disabled={promptState.action !== 'admin_delete' && !promptState.pin} className={`w-full py-4 rounded-xl text-white font-black text-sm tracking-widest shadow-lg transition-all ${promptState.action === 'edit' ? 'bg-[#065f46] shadow-[#065f46]/20' : 'bg-red-500 shadow-red-500/20'}`}>{promptState.action === 'edit' ? '확인 완료' : '영구 삭제'}</button>
+                                </form>
+                            </div>
+                        </div>
+                    )}
+                    {/* Lookup Modal */}
+                    {showLookup && (
+                        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[110] flex items-center justify-center p-4" onClick={() => setShowLookup(false)}>
+                            <div className="bg-white rounded-[2rem] shadow-2xl w-full max-w-sm p-8 relative animate-luxury-fade overflow-hidden" onClick={e => e.stopPropagation()}>
+                                <div className="absolute top-0 left-0 w-full h-1 bg-[#10b981]"></div>
+                                <button onClick={() => setShowLookup(false)} className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 text-gray-400 hover:text-gray-700 transition-colors">
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" /></svg>
+                                </button>
+                                <div className="text-center mb-8">
+                                    <div className="w-16 h-16 bg-[#ecfdf5] rounded-2xl flex items-center justify-center mx-auto mb-4 text-[#10b981] shadow-sm">
+                                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                                    </div>
+                                    <h3 className="text-xl font-black text-gray-900">내 후기 찾기</h3>
+                                    <p className="text-gray-400 text-[11px] font-bold mt-2 uppercase tracking-widest">Name & Password Lookup</p>
+                                </div>
+                                <form onSubmit={handleLookup} className="space-y-4">
+                                    <div>
+                                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5 block ml-1">이름 *</label>
+                                        <input type="text" value={lookupForm.name} onChange={e => setLookupForm(f => ({ ...f, name: e.target.value, error: '' }))} className="w-full px-4 py-4 rounded-xl bg-gray-50 border border-gray-100 focus:outline-none focus:ring-4 focus:ring-[#10b981]/5 focus:bg-white focus:border-[#10b981] text-sm font-bold transition-all" placeholder="작성 시 입력한 성함" required />
+                                    </div>
+                                    <div>
+                                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5 block ml-1">비밀번호 *</label>
+                                        <input type="password" maxLength="4" value={lookupForm.password} onChange={e => setLookupForm(f => ({ ...f, password: e.target.value.replace(/\D/g, ''), error: '' }))} className="w-full px-4 py-4 rounded-xl bg-gray-50 border border-gray-100 focus:outline-none focus:ring-4 focus:ring-[#10b981]/5 focus:bg-white focus:border-[#10b981] text-center tracking-[1em] text-xl font-black transition-all" placeholder="••••" required />
+                                    </div>
+                                    {lookupForm.error && <p className="text-red-500 text-[11px] font-black text-center bg-red-50 py-2 rounded-lg animate-bounce">{lookupForm.error}</p>}
+                                    <button type="submit" className="w-full py-4.5 rounded-xl bg-[#065f46] text-white font-black text-sm tracking-widest shadow-xl shadow-[#065f46]/20 hover:translate-y-[-2px] transition-all duration-300 mt-2">찾기 완료</button>
                                 </form>
                             </div>
                         </div>
@@ -1431,7 +1493,7 @@
             );
         };
 
-        const QuickMenu = ({ onNavigate }) => {
+        const QuickMenu = ({ onNavigate, bizInfo }) => {
             const [showTop, setShowTop] = useState(false);
             const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -1469,11 +1531,11 @@
 
                     <div className="flex flex-col items-end space-y-4 md:space-y-5">
                         {/* Representative Phone Number Pill */}
-                        <a href="tel:16888740" className="flex items-center bg-white text-[#10b981] px-3 md:px-4 py-2 md:py-2.5 rounded-full shadow-lg transition-all hover:scale-105 active:scale-95 border border-[#10b981]/20 group">
+                        <a href={`tel:${bizInfo.phone.replace(/[^0-9]/g, '')}`} className="flex items-center bg-white text-[#10b981] px-3 md:px-4 py-2 md:py-2.5 rounded-full shadow-lg transition-all hover:scale-105 active:scale-95 border border-[#10b981]/20 group">
                             <div className="bg-[#10b981]/10 p-1 md:p-1.5 rounded-full mr-2 group-hover:bg-[#10b981]/20 transition-colors">
                                 <svg className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#10b981]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                             </div>
-                            <span className="text-[10px] md:text-xs font-black tracking-widest mr-1">1688-8740</span>
+                            <span className="text-[10px] md:text-xs font-black tracking-widest mr-1">{bizInfo.phone}</span>
                         </a>
 
                         <div className="flex items-center space-x-3">
@@ -2010,13 +2072,18 @@
             );
         };
 
-        const AdminSettingsModal = ({ onClose, onLogout }) => {
-            const [mode, setMode] = useState('menu'); // 'menu' | 'change_password'
+        const AdminSettingsModal = ({ onClose, onLogout, bizInfo, setBizInfo }) => {
+            const [mode, setMode] = useState('menu'); // 'menu' | 'change_password' | 'edit_biz'
             const [currentPw, setCurrentPw] = useState('');
             const [newPw, setNewPw] = useState('');
             const [confirmPw, setConfirmPw] = useState('');
+            const [tempBiz, setTempBiz] = useState({ ...bizInfo });
             const [error, setError] = useState('');
             const [success, setSuccess] = useState(false);
+
+            useEffect(() => {
+                if (mode === 'edit_biz') setTempBiz({ ...bizInfo });
+            }, [mode, bizInfo]);
 
             const handlePasswordChange = (e) => {
                 e.preventDefault();
@@ -2036,9 +2103,15 @@
 
                 localStorage.setItem('wellservice_admin_pwd', newPw);
                 setSuccess(true);
-                setTimeout(() => {
-                    onClose();
-                }, 1500);
+                setTimeout(() => { onClose(); }, 1500);
+            };
+
+            const handleBizSave = (e) => {
+                e.preventDefault();
+                setBizInfo(tempBiz);
+                localStorage.setItem('wellservice_biz_info', JSON.stringify(tempBiz));
+                setSuccess(true);
+                setTimeout(() => { setMode('menu'); setSuccess(false); }, 1500);
             };
 
             return (
@@ -2049,20 +2122,30 @@
                         </button>
 
                         <div className="text-center mb-8">
-                            <div className="w-16 h-16 bg-[#065f46] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            <div className="w-16 h-16 bg-[#065f46] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg text-white">
+                                {mode === 'edit_biz' ? (
+                                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                                ) : (
+                                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                )}
                             </div>
-                            <h3 className="text-2xl font-black text-gray-900 tracking-tight">관리자 설정</h3>
-                            <p className="text-gray-400 text-sm mt-1.5 font-medium">{mode === 'menu' ? '원하시는 작업을 선택하세요.' : '새로운 비밀번호를 입력하세요.'}</p>
+                            <h3 className="text-2xl font-black text-gray-900 tracking-tight">{mode === 'edit_biz' ? '사업장 정보' : '관리자 설정'}</h3>
+                            <p className="text-gray-400 text-sm mt-1.5 font-medium">
+                                {mode === 'menu' ? '원하시는 작업을 선택하세요.' : (mode === 'edit_biz' ? '정보를 수정하고 저장하세요.' : '새로운 비밀번호를 입력하세요.')}
+                            </p>
                         </div>
 
                         {success ? (
                             <div className="text-center py-6 animate-luxury-fade">
                                 <div className="text-[#10b981] mb-2"><svg className="w-12 h-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" /></svg></div>
-                                <p className="font-bold text-gray-900 text-lg">변경 완료</p>
+                                <p className="font-bold text-gray-900 text-lg">저장 완료</p>
                             </div>
                         ) : mode === 'menu' ? (
                             <div className="space-y-3 animate-luxury-fade">
+                                <button onClick={() => setMode('edit_biz')} className="w-full py-4 rounded-xl border border-gray-200 text-gray-700 font-bold hover:bg-gray-50 transition-all flex items-center justify-between px-6">
+                                    사업장 정보 수정
+                                    <svg className="w-4 h-4 text-[#10b981]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                                </button>
                                 <button onClick={() => setMode('change_password')} className="w-full py-4 rounded-xl border border-gray-200 text-gray-700 font-bold hover:bg-gray-50 transition-all flex items-center justify-between px-6">
                                     비밀번호 변경
                                     <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
@@ -2072,6 +2155,33 @@
                                     안전하게 로그아웃
                                 </button>
                             </div>
+                        ) : mode === 'edit_biz' ? (
+                            <form onSubmit={handleBizSave} className="space-y-4 animate-luxury-fade">
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5 block ml-1">회사 주소</label>
+                                        <textarea value={tempBiz.address} onChange={e => setTempBiz(p => ({ ...p, address: e.target.value }))} required rows="3" className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-xs font-bold focus:outline-none focus:bg-white focus:border-[#10b981] transition-all" />
+                                    </div>
+                                    <div>
+                                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5 block ml-1">대표 번호</label>
+                                        <input type="text" value={tempBiz.phone} onChange={e => setTempBiz(p => ({ ...p, phone: e.target.value }))} required className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-xs font-bold focus:outline-none focus:bg-white focus:border-[#10b981] transition-all" />
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <div>
+                                            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5 block ml-1">대표자</label>
+                                            <input type="text" value={tempBiz.ceo} onChange={e => setTempBiz(p => ({ ...p, ceo: e.target.value }))} required className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-xs font-bold focus:outline-none focus:bg-white focus:border-[#10b981] transition-all" />
+                                        </div>
+                                        <div>
+                                            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5 block ml-1">사업자번호</label>
+                                            <input type="text" value={tempBiz.bizNum} onChange={e => setTempBiz(p => ({ ...p, bizNum: e.target.value }))} required className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-xs font-bold focus:outline-none focus:bg-white focus:border-[#10b981] transition-all" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex gap-2 pt-2">
+                                    <button type="button" onClick={() => setMode('menu')} className="w-1/3 py-3.5 rounded-xl border border-gray-200 text-gray-500 font-bold hover:bg-gray-50 transition-all text-sm">취소</button>
+                                    <button type="submit" className="w-2/3 py-3.5 rounded-xl bg-[#065f46] text-white font-black text-sm tracking-wide shadow-lg hover:bg-[#10b981] transition-all">정보 저장하기</button>
+                                </div>
+                            </form>
                         ) : (
                             <form onSubmit={handlePasswordChange} className="space-y-4 animate-luxury-fade">
                                 <div className="space-y-3">
@@ -2098,6 +2208,26 @@
             const [isAdmin, setIsAdmin] = useState(() => sessionStorage.getItem('wellservice_admin') === 'true');
             const [showAdminLogin, setShowAdminLogin] = useState(false);
             const [showAdminSettings, setShowAdminSettings] = useState(false);
+
+            // Business Information State (CEO/BizNum included as per plan)
+            const [bizInfo, setBizInfo] = useState(() => {
+                try {
+                    const saved = localStorage.getItem('wellservice_biz_info');
+                    return saved ? JSON.parse(saved) : {
+                        address: '전북특별자치도 전주시 완산구\n고사평 3길 13-8 1층(서신동)',
+                        phone: '1688-8740',
+                        ceo: '김태헌',
+                        bizNum: '203-15-67225'
+                    };
+                } catch {
+                    return {
+                        address: '전북특별자치도 전주시 완산구\n고사평 3길 13-8 1층(서신동)',
+                        phone: '1688-8740',
+                        ceo: '김태헌',
+                        bizNum: '203-15-67225'
+                    };
+                }
+            });
 
             useEffect(() => {
                 const observer = new IntersectionObserver((entries) => {
@@ -2139,9 +2269,9 @@
                 <div className="min-h-screen bg-white flex flex-col font-sans selection:bg-brand-green selection:text-white">
                     {/* 모바일 메뉴 오버레이: 헤더 외부에서 독립적으로 렌더링하여 backdrop-blur 스태킹 컨텍스트 버그 방지 */}
                     {showAdminLogin && <AdminLoginModal onClose={() => setShowAdminLogin(false)} onSuccess={handleAdminLogin} />}
-                    {showAdminSettings && <AdminSettingsModal onClose={() => setShowAdminSettings(false)} onLogout={handleAdminLogout} />}
-                    <MobileMenuOverlay isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} onNavigate={navigateToHome} />
-                    <Header onNavigate={navigateToHome} isHome={page === 'home'} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} isAdmin={isAdmin} onAdminTrigger={() => {
+                    {showAdminSettings && <AdminSettingsModal onClose={() => setShowAdminSettings(false)} onLogout={handleAdminLogout} bizInfo={bizInfo} setBizInfo={setBizInfo} />}
+                    <MobileMenuOverlay isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} onNavigate={navigateToHome} bizInfo={bizInfo} />
+                    <Header onNavigate={navigateToHome} isHome={page === 'home'} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} isAdmin={isAdmin} bizInfo={bizInfo} onAdminTrigger={() => {
                         if (isAdmin) {
                             setShowAdminSettings(true);
                         } else {
@@ -2189,24 +2319,24 @@
                                     <div className="flex flex-col items-center space-y-2">
                                         <div className="flex items-center gap-3">
                                             <span className="text-gray-600 font-bold text-[10px]">대표</span>
-                                            <span className="text-gray-300 font-bold">김태헌</span>
+                                            <span className="text-gray-300 font-bold">{bizInfo.ceo}</span>
                                         </div>
                                         <div className="flex items-center gap-3">
                                             <span className="text-gray-600 font-bold text-[10px]">사업자번호</span>
-                                            <span className="text-gray-300 font-bold">203-15-67225</span>
+                                            <span className="text-gray-300 font-bold">{bizInfo.bizNum}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="space-y-4">
                                     <h5 className="text-gray-400 font-black text-[10px] uppercase tracking-widest border-b border-white/5 pb-2 mb-4 inline-block">Location</h5>
-                                    <p className="text-gray-400 font-medium break-keep leading-relaxed max-w-[240px] mx-auto">
-                                        전북특별자치도 전주시 완산구<br />고사평 3길 13-8 1층(서신동)
+                                    <p className="text-gray-400 font-medium break-keep leading-relaxed max-w-[240px] mx-auto whitespace-pre-wrap">
+                                        {bizInfo.address}
                                     </p>
                                 </div>
                                 <div className="space-y-4">
                                     <h5 className="text-gray-400 font-black text-[10px] uppercase tracking-widest border-b border-white/5 pb-2 mb-4 inline-block">Contact Center</h5>
-                                    <a href="tel:16888740" className="block text-3xl font-black text-[#10b981] hover:text-white transition-all transform hover:scale-105 duration-300 tracking-tighter">
-                                        1688-8740
+                                    <a href={`tel:${bizInfo.phone.replace(/[^0-9]/g, '')}`} className="block text-3xl font-black text-[#10b981] hover:text-white transition-all transform hover:scale-105 duration-300 tracking-tighter">
+                                        {bizInfo.phone}
                                     </a>
                                     <p className="text-[10px] text-gray-600 font-bold">평일 09:00 - 18:00</p>
                                 </div>
@@ -2225,7 +2355,7 @@
                         </div>
                     </footer>
 
-                    {page === 'home' && <QuickMenu onNavigate={navigateToHome} />}
+                    {page === 'home' && <QuickMenu onNavigate={navigateToHome} bizInfo={bizInfo} />}
                 </div>
             );
         }

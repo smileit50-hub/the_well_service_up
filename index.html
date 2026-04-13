@@ -1799,8 +1799,38 @@
                         {posts.length > 0 && activePost ? (
                             <div className="bg-white rounded-[2.5rem] shadow-[0_12px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col lg:flex-row h-auto lg:min-h-[650px] relative group animate-in fade-in zoom-in-95 duration-500">
 
+                                {/* Mobile Only: Top Controls Bar */}
+                                {viewMode === 'DETAIL' && (
+                                    <div className="lg:hidden w-full bg-white px-8 py-6 border-b border-gray-100 flex flex-col gap-6">
+                                        <div className="flex justify-between items-center">
+                                            <div className="flex items-center gap-2">
+                                                <span className="w-2 h-2 bg-[#10b981] rounded-full animate-pulse"></span>
+                                                <span className="bg-gray-100 text-gray-500 font-extrabold text-[10px] px-3 py-1 rounded-md tracking-widest uppercase">DETAIL REPORT</span>
+                                            </div>
+                                            <button onClick={() => setViewMode('LIST')} className="bg-gray-50 text-gray-500 py-2.5 px-5 rounded-full text-[13px] font-black flex items-center gap-2 shadow-sm border border-gray-100 active:scale-95 transition-all">
+                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                                                목록으로
+                                            </button>
+                                        </div>
+                                        <div className="flex bg-gray-50 p-1.5 rounded-2xl shadow-inner border border-gray-100">
+                                            {['before', 'during', 'after'].map(s => (
+                                                <button key={s} onClick={() => { setStage(s); setImgIndex(0); }} className={`flex-1 py-3.5 rounded-xl font-black text-[13px] transition-all transform duration-300 ${stage === s ? 'bg-[#10b981] text-white shadow-lg scale-[1.02]' : 'text-gray-400 active:scale-95'}`}>
+                                                    {s === 'before' ? '작업 전' : s === 'during' ? '작업 중' : '작업 후'}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
                                 {/* 1. 큰 이미지 영역 */}
-                                <div className={`w-full lg:w-[60%] min-h-[400px] lg:h-auto relative overflow-hidden bg-gray-900 flex-shrink-0 group/slider ${viewMode === 'LIST' ? 'cursor-pointer' : ''}`} onClick={viewMode === 'LIST' ? openProjectDetail : null}>
+                                <div className={`w-full lg:w-[60%] min-h-[400px] lg:h-auto relative overflow-hidden bg-gray-900 flex-shrink-0 group/slider ${viewMode === 'LIST' ? 'cursor-pointer' : ''}`} onClick={viewMode === 'LIST' ? openProjectDetail : (e) => {
+                                    if (viewMode === 'DETAIL') {
+                                        const sequence = ['before', 'during', 'after'];
+                                        const nextIdx = (sequence.indexOf(stage) + 1) % sequence.length;
+                                        setStage(sequence[nextIdx]);
+                                        setImgIndex(0);
+                                    }
+                                }}>
                                     <div
                                         className="absolute inset-0 w-full h-full transition-all duration-1000 group-hover/slider:scale-[1.05]"
                                         style={{
@@ -1819,6 +1849,15 @@
                                             </div>
                                         </div>
                                     )}
+
+                                    {viewMode === 'DETAIL' && (
+                                        <div className="absolute top-6 left-6 z-30 pointer-events-none lg:hidden">
+                                            <div className="bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 flex items-center gap-2">
+                                                <div className="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-pulse"></div>
+                                                <span className="text-white font-black text-[10px] uppercase tracking-tighter">사진 클릭 시 단계 전환</span>
+                                            </div>
+                                        </div>
+                                    )}
                                     {/* 상세 슬라이더 화살표 */}
                                     {viewMode === 'DETAIL' && currentDetailImages.length > 1 && (
                                         <React.Fragment>
@@ -1832,7 +1871,7 @@
                                 <div className="w-full lg:w-[40%] flex flex-col bg-white relative">
                                     <div className="p-10 lg:p-12 flex-grow overflow-y-auto custom-scrollbar active-info-scroll border-b border-gray-50">
 
-                                        <div className={`flex justify-between items-center mb-8 ${viewMode === 'DETAIL' ? 'sticky top-0 bg-white/95 backdrop-blur-sm z-30 py-2 -mx-4 px-4' : ''}`}>
+                                        <div className={`flex justify-between items-center mb-8 ${viewMode === 'DETAIL' ? 'lg:sticky lg:top-0 bg-white/95 backdrop-blur-sm z-30 py-2 -mx-4 px-4' : ''}`}>
                                             <div className="flex items-center gap-3">
                                                 <span className="bg-gray-100 text-gray-500 font-extrabold text-[10px] px-3 py-1 rounded-md tracking-widest uppercase">
                                                     {viewMode === 'LIST' ? 'CASE SUMMARY' : 'DETAILED REPORT'}
@@ -1844,7 +1883,7 @@
                                                 )}
                                             </div>
                                             {viewMode === 'DETAIL' && (
-                                                <button onClick={() => setViewMode('LIST')} className="bg-gray-50 text-gray-400 p-2 rounded-full hover:text-gray-900 hover:bg-gray-200 transition-colors flex items-center pl-4 pr-5 group">
+                                                <button onClick={() => setViewMode('LIST')} className="hidden lg:flex bg-gray-50 text-gray-400 p-2 rounded-full hover:text-gray-900 hover:bg-gray-200 transition-colors items-center pl-4 pr-5 group">
                                                     <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
                                                     <span className="text-xs font-black">목록으로</span>
                                                 </button>
@@ -1852,7 +1891,7 @@
                                         </div>
 
                                         {viewMode === 'DETAIL' && (
-                                            <div className="flex bg-gray-50 p-1.5 rounded-2xl mb-8 sticky top-[60px] z-20 shadow-sm border border-gray-100">
+                                            <div className="hidden lg:flex bg-gray-50 p-1.5 rounded-2xl mb-8 sticky top-[60px] z-20 shadow-sm border border-gray-100">
                                                 {['before', 'during', 'after'].map(s => (
                                                     <button key={s} onClick={() => { setStage(s); setImgIndex(0); }} className={`flex-1 py-3 rounded-xl font-black text-xs transition-all ${stage === s ? 'bg-[#10b981] text-white shadow-lg' : 'text-gray-400 hover:text-gray-600'}`}>
                                                         {s === 'before' ? '작업 전' : s === 'during' ? '작업 중' : '작업 후'}

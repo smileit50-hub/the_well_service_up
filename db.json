@@ -1,0 +1,40 @@
+{
+  "portfolio": [
+    {
+      "id": 1,
+      "category": "준공-청소",
+      "title": "[준공 청소] 첫 번째 프리미엄 현장",
+      "content": "더 웰 서비스만의 독보적인 8단계 세척 시스템을 적용한 대표 사례입니다. 대형 창호와 특수 바닥재의 오염을 완벽하게 제거하여 본래의 광택을 되찾아드렸습니다. 상세 리포트에서 작업 전후의 놀라운 변화를 확인하세요.",
+      "date": "2026.03.20",
+      "img": "public/images/port-main-1.jpg",
+      "detail": {
+        "before": [{ "url": "public/images/port-main-1.jpg", "posX": 50, "posY": 50 }],
+        "during": [{ "url": "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&q=80&w=1200", "posX": 50, "posY": 50 }],
+        "after": [{ "url": "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&q=80&w=1200", "posX": 50, "posY": 50 }]
+      }
+    },
+    {
+      "id": 2,
+      "category": "바닥-청소",
+      "title": "[바닥 청소] 두 번째 디테일 작업 완료",
+      "content": "정밀 바닥 세척과 왁스 코팅을 통해 공간의 위생 등급을 한 차원 높인 현장입니다. 특수 장비를 활용하여 찌든 때를 뿌리까지 제거했습니다.",
+      "date": "2026.03.15",
+      "img": "public/images/port-main-2.jpg",
+      "detail": {
+        "before": [{ "url": "public/images/port-main-2.jpg", "posX": 50, "posY": 50 }],
+        "during": [],
+        "after": [{ "url": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200", "posX": 50, "posY": 50 }]
+      }
+    }
+  ],
+  "reviews": [
+    { "id": 1, "name": "김*호 담당자", "company": "ㅇㅇ시청", "text": "관공서 특성상 위생과 보안이 중요한데, 매뉴얼대로 정말 꼼꼼하게 작업해주셔서 만족스럽습니다.", "rating": 5, "date": "2024.03.15", "isUser": true, "password": "0000" },
+    { "id": 2, "name": "이*영 대표", "company": "(주)혁신 IT 기업", "text": "직원들이 출근했을 때 사무실이 상쾌해서 너무 좋아합니다. 업무 효율이 저절로 올라가는 기분이에요.", "rating": 5, "date": "2024.03.10", "isUser": true, "password": "0000" },
+    { "id": 3, "name": "박*진 현장소장", "company": "대형 복합건물", "text": "준공 청소를 맡겼는데 눈에 보이지 않는 먼지까지 확실히 잡아주셔서 입주자들 컴플레인이 없었습니다.", "rating": 4, "date": "2024.03.05", "isUser": true, "password": "0000" },
+    { "id": 4, "name": "최*준 팀장", "company": "메디컬 센터", "text": "병원이라 위생이 최우선인데, 정밀 살균 세척 덕분에 안심하고 진료에 집중할 수 있게 되었습니다.", "rating": 5, "date": "2024.02.28", "isUser": true, "password": "0000" },
+    { "id": 5, "name": "정*미 실장", "company": "디자인 스튜디오", "text": "유리창 클리닝 후 채광이 달라졌어요. 공간의 전체적인 분위기가 밝아져서 아주 만족합니다.", "rating": 5, "date": "2024.02.20", "isUser": true, "password": "0000" },
+    { "id": 6, "name": "한*수 담당", "company": "물류 클러스터", "text": "바닥 고광택 왁싱 후 관리가 너무 편해졌네요. 내구성도 좋고 보기에도 훨씬 전문적입니다.", "rating": 5, "date": "2024.02.15", "isUser": true, "password": "0000" }
+  ],
+  "system_images": [],
+  "lastUpdated": "2026-04-13 18:00:00"
+}

@@ -343,7 +343,7 @@
         const { useState, useEffect, useMemo, useRef } = React;
 
         // ⚙️ 관리자 비밀번호 (localStorage 우선, 없으면 기본값)
-        const getAdminPassword = () => localStorage.getItem('wellservice_admin_pwd') || '1234';
+        const getAdminPassword = () => localStorage.getItem('wellservice_admin_pwd') || '0000';
 
         const Header = ({ onNavigate, isHome, isMenuOpen, setIsMenuOpen, onAdminTrigger, isAdmin }) => {
             const [isScrolled, setIsScrolled] = useState(false);
@@ -517,7 +517,7 @@
                                     <p>우리가 정의하는 청소는 단순한 오염 제거가 아닙니다.<br />건축물이 가진 본연의 빛을 되찾아주는 동시에, 그 안에서 숨 쉬는 사람들의 <strong className="text-[#065f46] font-black">{'\'건강한 삶(Well-being)\''}</strong>을 설계하는 일입니다.</p>
                                     <p>더 웰 서비스는 눈에 보이는 깨끗함 그 너머의 가치를 봅니다.<br />준공 현장의 미세한 분진부터 외벽과 유리의 고착된 오염까지, 우리는 각 분야의 스페셜리스트들이 모인 체계적인 팀워크로 대응합니다.</p>
                                     <p className="text-[#f97316] font-black text-lg md:text-xl italic drop-shadow-sm">"공간의 가치는 결국 머무는 사람으로부터 시작되기 때문입니다."</p>
-                                    <div className="pt-6 border-t border-green-200/50"><p className="text-gray-900 font-bold text-base md:text-lg">가장 맑은 시야를 선사하는 유리 케어, 호흡의 질을 바꾸는 정밀 바닥 관리, 건물의 생명력을 연장하는 외벽 복원까지.<br />더 웰 서비스의 숙련된 전문가 그룹이 당신의 비즈니스 공간을 가장 안전하고 풍요로운 '웰빙'의 장소로 완성해 드리겠습니다.</p></div>
+                                    <div className="pt-6 border-t border-green-200/50"><p className="text-gray-900 font-bold text-base md:text-lg">호흡의 질을 바꾸는 정밀 바닥 관리, 건물의 생명력을 연장하는 외벽 복원, 가장 맑은 시야를 선사하는 유리 케어까지.<br />더 웰 서비스의 숙련된 전문가 그룹이 당신의 비즈니스 공간을 가장 안전하고 풍요로운 '웰빙'의 장소로 완성해 드리겠습니다.</p></div>
                                 </div>
                             </div>
                         </div>
@@ -1228,8 +1228,8 @@
             const serviceList = [
                 { title: '준공 청소', desc: '시공 후 남은 분진과 유해물질 완벽 제거', img: 'public/images/uploaded_service_new.jpg', icon: null },
                 { title: '바닥 청소', desc: '전문 장비와 약품으로 바닥 찌든 때 제거 및 코팅', img: 'public/images/uploaded_service_floor_new.jpg', icon: null },
-                { title: '유리 청소', desc: '얼룩 없이 투명한 시야 확보를 위한 특수 클리닝', img: 'public/images/uploaded_service_glass_new.jpg', icon: null },
-                { title: '외벽 청소', desc: '건물 외관의 오염물을 제거하여 빌딩 가치 상승', img: 'public/images/uploaded_service_exterior_new.jpg', icon: null }
+                { title: '외벽 청소', desc: '건물 외관의 오염물을 제거하여 빌딩 가치 상승', img: 'public/images/uploaded_service_exterior_new.jpg', icon: null },
+                { title: '유리 청소', desc: '얼룩 없이 투명한 시야 확보를 위한 특수 클리닝', img: 'public/images/uploaded_service_glass_new.jpg', icon: null }
             ];
             return (
                 <section id="services" className="py-16 md:py-24 bg-white relative">
@@ -1260,8 +1260,8 @@
             const categories = [
                 { id: '준공-청소', name: '준공 청소', desc: '인테리어 시공 및 입주 전 필수 초정밀 클리닝', img: 'public/images/port-main-1.jpg' },
                 { id: '바닥-청소', name: '바닥 청소', desc: '특수 장비를 활용한 찌든 때 제거 및 고광택 왁싱 코팅', img: 'public/images/port-main-2.jpg' },
-                { id: '유리-청소', name: '유리 청소', desc: '얼룩 없는 최상의 시야를 보장하는 고층 특수 투명창 시공', img: 'public/images/port-main-3.jpg' },
                 { id: '외벽-청소', name: '외벽 청소', desc: '산성비로 부식되고 오염된 건축물 마감재 복원 및 정밀 세척', img: 'public/images/port-main-4.jpg' },
+                { id: '유리-청소', name: '유리 청소', desc: '얼룩 없는 최상의 시야를 보장하는 고층 특수 투명창 시공', img: 'public/images/port-main-3.jpg' },
             ];
             return (
                 <section id="portfolio" className="py-16 md:py-24 bg-gray-50 relative border-t border-gray-100 reveal">
@@ -1392,8 +1392,8 @@
             const services = [
                 { id: '준공청소', label: '준공 청소', icon: <React.Fragment><path d="M3 21V7L12 3L21 7V21H3Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M9 17H15M12 11V14M12 7V8M17 14L19 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><circle cx="18" cy="13" r="1" fill="currentColor" /><circle cx="6" cy="12" r="1.5" fill="currentColor" /></React.Fragment> },
                 { id: '바닥청소', label: '바닥 청소', icon: <React.Fragment><path d="M4 14C4 14 6 13 12 13C18 13 20 14 20 14V19C20 19 18 20 12 20C6 20 4 19 4 19V14Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M12 13V4M12 4L9 7M12 4L15 7M17 9.5L19 10.5M5 10.5L7 9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><circle cx="12" cy="16.5" r="1.5" fill="currentColor" /></React.Fragment> },
-                { id: '유리청소', label: '유리 청소', icon: <React.Fragment><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" /><path d="M4 10H20M10 4V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><path d="M15 7L18 10M6 14L10 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="opacity-40" /><path d="M14 14L16 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></React.Fragment> },
                 { id: '외벽청소', label: '외벽 청소', icon: <path d="M4 21V3H14V21M14 7H20V21M7 7H11M7 11H11M7 15H11M17 11H18M17 15H18M2 21H22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /> },
+                { id: '유리청소', label: '유리 청소', icon: <React.Fragment><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" /><path d="M4 10H20M10 4V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><path d="M15 7L18 10M6 14L10 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="opacity-40" /><path d="M14 14L16 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></React.Fragment> },
             ];
 
             return (
@@ -1418,6 +1418,7 @@
                                 </div>
                             ) : (
                                 <React.Fragment>
+
                                     <div className="text-center mb-8 md:mb-14">
                                         <span className="inline-block px-4 py-1.5 rounded-full glossy-green text-white text-[10px] font-black tracking-[0.2em] uppercase mb-4 md:mb-6 shadow-md border border-white/20">Consultation</span>
                                         <h2 className="text-xl sm:text-3xl md:text-5xl font-black text-gray-900 mb-3 md:mb-5 tracking-tight">무료 방문 견적 신청</h2>
@@ -1578,24 +1579,6 @@
             );
         };
 
-        // --- NEW PORTFOLIO LOGIC ---
-
-        // --- NEW PORTFOLIO LOGIC ---
-
-        // --- REFINED PORTFOLIO LOGIC (Layout-Preserving) ---
-
-        // --- REFINED PORTFOLIO LOGIC (Layout-Preserving) ---
-
-        // --- PORTFOLIO LOGIC (Image Click & Numbering) ---
-
-        // --- TWO-STEP PORTFOLIO LOGIC (List -> Detail) ---
-
-        // --- CLEAN PORTFOLIO UI (Sidebar Labels & Hover Cleanup) ---
-
-        // --- PORTFOLIO UI ENHANCEMENT (Floating Back Button & Sticky Detail Header) ---
-
-        // --- UNIVERSAL FLOATING BACK BUTTON ---
-
         const DraggablePreview = ({ src, initialPosition, onPositionChange, onDelete }) => {
             const imgRef = useRef(null);
             const [pos, setPos] = useState(initialPosition || { x: 50, y: 50 });
@@ -1634,10 +1617,131 @@
             );
         };
 
+        /**
+         * TheWellDB - Unified Storage Service (Full-Stack Sync)
+         * Automatically switches between Server (api.php) and Local (IndexedDB) storage.
+         */
+        const TheWellDB = {
+            dbName: 'TheWellServiceDB',
+            storeNames: ['portfolio', 'reviews', 'system_images'],
+            version: 2,
+            baseUrl: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? '' : '', // Adapt based on hosting
+            apiUrl: 'api.php',
+
+            // --- Server Sync Methods ---
+            async fetchAll() {
+                try {
+                    const response = await fetch(this.apiUrl);
+                    if (!response.ok) throw new Error('Server not reachable');
+                    return await response.json();
+                } catch (err) {
+                    console.warn('Server sync failed, falling back to local DB:', err);
+                    return null;
+                }
+            },
+
+            async pushToServer(data) {
+                try {
+                    // Pass admin password if available in session
+                    const isAdmin = sessionStorage.getItem('wellservice_admin') === 'true';
+                    const response = await fetch(this.apiUrl, {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'X-Admin-Password': isAdmin ? (localStorage.getItem('wellservice_admin_pwd') || '0000') : ''
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    return response.ok;
+                } catch (err) {
+                    console.error('Push to server failed:', err);
+                    return false;
+                }
+            },
+
+            // --- Local Storage Methods (IndexedDB) ---
+            open() {
+                return new Promise((resolve, reject) => {
+                    const request = indexedDB.open(this.dbName, this.version);
+                    request.onupgradeneeded = (e) => {
+                        const db = e.target.result;
+                        this.storeNames.forEach(name => {
+                            if (!db.objectStoreNames.contains(name)) {
+                                db.createObjectStore(name, { keyPath: 'id', autoIncrement: name !== 'portfolio' });
+                            }
+                        });
+                        // Migration for old store
+                        if (db.objectStoreNames.contains('portfolio_posts')) {
+                            db.deleteObjectStore('portfolio_posts');
+                        }
+                    };
+                    request.onsuccess = (e) => resolve(e.target.result);
+                    request.onerror = (e) => reject(e.target.error);
+                });
+            },
+
+            async getLocal(storeName) {
+                const db = await this.open();
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction(storeName, 'readonly');
+                    const store = transaction.objectStore(storeName);
+                    const request = store.getAll();
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => reject(request.error);
+                });
+            },
+
+            async saveLocal(storeName, data) {
+                const db = await this.open();
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction(storeName, 'readwrite');
+                    const store = transaction.objectStore(storeName);
+                    store.clear().onsuccess = () => {
+                        if (Array.isArray(data)) {
+                            data.forEach(item => store.put(item));
+                        } else {
+                            store.put(data);
+                        }
+                    };
+                    transaction.oncomplete = () => resolve();
+                    transaction.onerror = () => reject(transaction.error);
+                });
+            },
+
+            // --- Unified API ---
+            async loadAll() {
+                const serverData = await this.fetchAll();
+                if (serverData) {
+                    // Update local cache too
+                    for (const store of this.storeNames) {
+                        if (serverData[store]) await this.saveLocal(store, serverData[store]);
+                    }
+                    return serverData;
+                }
+                // Fallback to local
+                const localData = {};
+                for (const store of this.storeNames) {
+                    localData[store] = await this.getLocal(store);
+                }
+                return localData;
+            },
+
+            async updateStore(storeName, updatedArray) {
+                // Read full DB first to preserve other stores
+                const fullData = await this.loadAll();
+                fullData[storeName] = updatedArray;
+                
+                // Save locally
+                await this.saveLocal(storeName, updatedArray);
+                
+                // Push to server
+                return await this.pushToServer(fullData);
+            }
+        };
+
         const BoardPage = ({ category, onBack, isAdmin }) => {
             const readableCategory = category ? category.replace('-', ' ') : '알 수 없음';
 
-            // Initial Seed Data
             const seedPosts = useMemo(() => [
                 {
                     id: 1, category: '준공-청소', title: `[준공 청소] 첫 번째 프리미엄 현장`, content: `더 웰 서비스만의 독보적인 8단계 세척 시스템을 적용한 대표 사례입니다. 대형 창호와 특수 바닥재의 오염을 완벽하게 제거하여 본래의 광택을 되찾아드렸습니다. 상세 리포트에서 작업 전후의 놀라운 변화를 확인하세요.`, date: '2026.03.20', img: 'public/images/port-main-1.jpg',
@@ -1657,47 +1761,121 @@
                 }
             ], []);
 
-            const [allPosts, setAllPosts] = useState(() => {
-                try {
-                    const saved = localStorage.getItem('wellservice_portfolio_v1');
-                    return saved ? JSON.parse(saved) : seedPosts;
-                } catch { return seedPosts; }
-            });
+            const [allPosts, setAllPosts] = useState([]);
+            const [isDataLoaded, setIsDataLoaded] = useState(false);
 
-            // Category Filtered Posts
+            useEffect(() => {
+                const initData = async () => {
+                    try {
+                        const fullData = await TheWellDB.loadAll();
+                        let data = fullData.portfolio || [];
+                        
+                        if (data.length === 0) {
+                            // Check for legacy localStorage data
+                            const legacy = localStorage.getItem('wellservice_portfolio_v1');
+                            if (legacy) {
+                                const parsed = JSON.parse(legacy);
+                                await TheWellDB.updateStore('portfolio', parsed);
+                                data = parsed;
+                                localStorage.removeItem('wellservice_portfolio_v1');
+                            } else {
+                                data = seedPosts;
+                                await TheWellDB.updateStore('portfolio', seedPosts);
+                            }
+                        }
+                        setAllPosts(data);
+                    } catch (err) {
+                        console.error('DB Load Error:', err);
+                        setAllPosts(seedPosts);
+                    } finally {
+                        setIsDataLoaded(true);
+                    }
+                };
+                initData();
+            }, []);
+
             const posts = useMemo(() => allPosts.filter(p => !category || p.category === category), [allPosts, category]);
 
             const [activeIndex, setActiveIndex] = useState(0);
-            const [viewMode, setViewMode] = useState('LIST');
             const [stage, setStage] = useState('after');
             const [imgIndex, setImgIndex] = useState(0);
 
             useEffect(() => { window.scrollTo(0, 0); setActiveIndex(0); }, [category]);
 
             const activePost = posts[activeIndex];
-            const currentDetailImages = activePost && activePost.detail && activePost.detail[stage] ? activePost.detail[stage] : [];
-            const activeImg = (viewMode === 'DETAIL' && currentDetailImages[imgIndex])
-                ? currentDetailImages[imgIndex]
-                : (activePost ? { url: activePost.img, posX: 50, posY: 50 } : null);
+            
+            const stageSequence = useMemo(() => {
+                if (!activePost || !activePost.detail) return ['after'];
+                const seq = [];
+                if (activePost.detail.before?.length > 0) seq.push('before');
+                if (activePost.detail.during?.length > 0) seq.push('during');
+                if (activePost.detail.after?.length > 0) seq.push('after');
+                return seq.length > 0 ? seq : ['after'];
+            }, [activePost]);
 
-            const saveAll = (updated) => {
-                setAllPosts(updated);
-                localStorage.setItem('wellservice_portfolio_v1', JSON.stringify(updated));
-            };
+            const currentDetailImages = useMemo(() => {
+                return (activePost && activePost.detail && activePost.detail[stage]) ? activePost.detail[stage] : [];
+            }, [activePost, stage]);
 
-            const openProjectDetail = () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                setViewMode('DETAIL');
-                setStage('after');
+            const activeImg = useMemo(() => {
+                if (!activePost) return null;
+                if (currentDetailImages.length > 0) {
+                    return currentDetailImages[imgIndex] || currentDetailImages[0];
+                }
+                return { url: activePost.img, posX: 50, posY: 50 };
+            }, [activePost, currentDetailImages, imgIndex]);
+
+            const nextStage = (e) => {
+                if (e) e.stopPropagation();
+                const nextIdx = (stageSequence.indexOf(stage) + 1) % stageSequence.length;
+                setStage(stageSequence[nextIdx]);
                 setImgIndex(0);
             };
+
+            const prevStage = (e) => {
+                if (e) e.stopPropagation();
+                const prevIdx = (stageSequence.indexOf(stage) - 1 + stageSequence.length) % stageSequence.length;
+                setStage(stageSequence[prevIdx]);
+                setImgIndex(0);
+            };
+
+            const nextImage = (e) => {
+                if (e) e.stopPropagation();
+                if (currentDetailImages.length > 1 && imgIndex < currentDetailImages.length - 1) {
+                    setImgIndex(prev => prev + 1);
+                } else {
+                    nextStage(e);
+                }
+            };
+
+            const prevImage = (e) => {
+                if (e) e.stopPropagation();
+                if (imgIndex > 0) {
+                    setImgIndex(prev => prev - 1);
+                } else {
+                    const prevIdx = (stageSequence.indexOf(stage) - 1 + stageSequence.length) % stageSequence.length;
+                    const prevStageName = stageSequence[prevIdx];
+                    setStage(prevStageName);
+                    const prevStageImages = activePost.detail[prevStageName] || [];
+                    setImgIndex(Math.max(0, prevStageImages.length - 1));
+                }
+            };
+
+            const saveAll = async (updated) => {
+                setAllPosts(updated);
+                try {
+                    await TheWellDB.updateStore('portfolio', updated);
+                } catch (err) {
+                    console.error('DB Save Error:', err);
+                }
+            };
+
 
             const [isModalOpen, setIsModalOpen] = useState(false);
             const [formData, setFormData] = useState({ title: '', content: '' });
             const [filesData, setFilesData] = useState({ main: null, before: [], during: [], after: [] });
 
-            // Compress and convert a file to Base64 for persistent localStorage storage
-            const compressToBase64 = (file, maxSize = 1200) => new Promise((resolve) => {
+            const compressToBase64 = (file, maxSize = 1000) => new Promise((resolve) => {
                 const reader = new FileReader();
                 reader.onload = (ev) => {
                     const img = new Image();
@@ -1711,7 +1889,7 @@
                         canvas.width = width;
                         canvas.height = height;
                         canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-                        resolve(canvas.toDataURL('image/jpeg', 0.82));
+                        resolve(canvas.toDataURL('image/jpeg', 0.7));
                     };
                     img.src = ev.target.result;
                 };
@@ -1743,7 +1921,7 @@
                     };
                     const newPost = { id: Date.now(), category: category || '준공-청소', title: formData.title, content: formData.content, date: new Date().toLocaleDateString('ko-KR'), img: filesData.main ? filesData.main.url : fallbackImg, detail: detailImgs };
                     const updated = [newPost, ...allPosts];
-                    saveAll(updated);
+                    await saveAll(updated);
                     setIsModalOpen(false);
                     setFilesData({ main: null, before: [], during: [], after: [] });
                     setFormData({ title: '', content: '' });
@@ -1754,41 +1932,42 @@
                 }
             };
 
-            const handleDeletePost = (id) => {
+            const handleDeletePost = async (id) => {
                 if (!window.confirm('정말로 이 포트폴리오를 삭제하시겠습니까?')) return;
                 const updated = allPosts.filter(p => p.id !== id);
-                saveAll(updated);
+                await saveAll(updated);
                 setActiveIndex(0);
             };
 
             return (
                 <div className="pt-28 pb-32 min-h-screen bg-gray-50 font-sans animate-in fade-in slide-in-from-bottom-12 duration-[1500ms] ease-out">
 
-                    {/* 통합 플로팅 뒤로가기 버튼 */}
-                    <div className="fixed top-24 left-6 md:left-12 z-[90] animate-in slide-in-from-left-10 duration-500">
-                        <button
-                            onClick={viewMode === 'DETAIL' ? () => setViewMode('LIST') : onBack}
-                            className="group flex items-center bg-white/90 backdrop-blur-md border border-gray-100 p-2 md:pr-6 rounded-full shadow-2xl hover:bg-[#10b981] hover:text-white transition-all transform hover:scale-105 active:scale-95"
-                        >
-                            <div className="w-10 h-10 md:w-12 md:h-12 bg-[#10b981] group-hover:bg-white text-white group-hover:text-[#10b981] rounded-full flex items-center justify-center transition-colors shadow-lg">
-                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-                            </div>
-                            <span className="hidden md:block ml-4 font-black transition-colors uppercase tracking-tight">
-                                {viewMode === 'DETAIL' ? '현장 목록으로' : '대문으로 돌아가기'}
-                            </span>
-                        </button>
-                    </div>
-
+                    {/* 메인 콘텐츠 영역 */}
                     <div className="max-w-7xl mx-auto px-6">
+                        {/* '대문으로 돌아가기' 버튼: Sticky 위치 조정 및 텍스트 줄바꿈 방지 */}
+                        <div className="sticky top-28 z-[90] mb-8 animate-in slide-in-from-left-5 duration-700">
+                            <button
+                                onClick={onBack}
+                                className="group inline-flex items-center bg-[#10b981] text-white p-2.5 pr-6 rounded-full shadow-[0_10px_25px_rgba(16,185,129,0.2)] hover:bg-[#065f46] transition-all transform hover:scale-105 active:scale-95"
+                            >
+                                <div className="w-10 h-10 bg-white text-[#10b981] rounded-full flex items-center justify-center transition-colors shadow-sm">
+                                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                                </div>
+                                <span className="ml-4 font-black transition-colors uppercase tracking-tight text-xs md:text-base whitespace-nowrap">
+                                    대문으로 돌아가기
+                                </span>
+                            </button>
+                        </div>
+
                         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12">
                             <div>
                                 <div className="w-16 h-1.5 bg-[#10b981] rounded-full mb-6"></div>
                                 <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">
-                                    {viewMode === 'LIST' ? `${readableCategory} 현황` : 'Success Story'}
+                                    {readableCategory} 현황
                                 </h1>
-                                <p className="text-lg text-gray-400 font-medium">{viewMode === 'LIST' ? '현장 관리 데이터를 번호별로 탐색하세요.' : `${activePost?.title}의 드라마틱한 변화 기록입니다.`}</p>
+                                <p className="text-lg text-gray-400 font-medium">현장 관리 데이터를 번호별로 탐색하세요.</p>
                             </div>
-                            {viewMode === 'LIST' && isAdmin && (
+                            {isAdmin && (
                                 <button onClick={() => setIsModalOpen(true)} className="mt-8 md:mt-0 inline-flex items-center justify-center px-8 py-4 bg-gray-900 text-white rounded-xl font-bold shadow-xl hover:bg-[#10b981] transition-transform transform hover:-translate-y-1 duration-300">
                                     <svg className="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4" /></svg>
                                     새 갤러리 업로드
@@ -1796,277 +1975,207 @@
                             )}
                         </div>
 
-                        {posts.length > 0 && activePost ? (
+                        {isDataLoaded && posts.length > 0 && activePost ? (
                             <div className="bg-white rounded-[2.5rem] shadow-[0_12px_40px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden flex flex-col lg:flex-row h-auto lg:min-h-[650px] relative group animate-in fade-in zoom-in-95 duration-500">
 
-                                {/* Mobile Only: Top Controls Bar */}
-                                {viewMode === 'DETAIL' && (
-                                    <div className="lg:hidden w-full bg-white px-8 py-6 border-b border-gray-100 flex flex-col gap-6">
-                                        <div className="flex justify-between items-center">
-                                            <div className="flex items-center gap-2">
-                                                <span className="w-2 h-2 bg-[#10b981] rounded-full animate-pulse"></span>
-                                                <span className="bg-gray-100 text-gray-500 font-extrabold text-[10px] px-3 py-1 rounded-md tracking-widest uppercase">DETAIL REPORT</span>
-                                            </div>
-                                            <button onClick={() => setViewMode('LIST')} className="bg-gray-50 text-gray-500 py-2.5 px-5 rounded-full text-[13px] font-black flex items-center gap-2 shadow-sm border border-gray-100 active:scale-95 transition-all">
-                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-                                                목록으로
-                                            </button>
-                                        </div>
-                                        <div className="flex bg-gray-50 p-1.5 rounded-2xl shadow-inner border border-gray-100">
-                                            {['before', 'during', 'after'].map(s => (
-                                                <button key={s} onClick={() => { setStage(s); setImgIndex(0); }} className={`flex-1 py-3.5 rounded-xl font-black text-[13px] transition-all transform duration-300 ${stage === s ? 'bg-[#10b981] text-white shadow-lg scale-[1.02]' : 'text-gray-400 active:scale-95'}`}>
-                                                    {s === 'before' ? '작업 전' : s === 'during' ? '작업 중' : '작업 후'}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
 
-                                {/* 1. 큰 이미지 영역 */}
-                                <div className={`w-full lg:w-[60%] min-h-[400px] lg:h-auto relative overflow-hidden bg-gray-900 flex-shrink-0 group/slider ${viewMode === 'LIST' ? 'cursor-pointer' : ''}`} onClick={viewMode === 'LIST' ? openProjectDetail : (e) => {
-                                    if (viewMode === 'DETAIL') {
-                                        const sequence = ['before', 'during', 'after'];
-                                        const nextIdx = (sequence.indexOf(stage) + 1) % sequence.length;
-                                        setStage(sequence[nextIdx]);
-                                        setImgIndex(0);
-                                    }
-                                }}>
+                                {/* 왼쪽 이미지 영역 */}
+                                <div className={`w-full lg:w-[60%] min-h-[400px] lg:h-auto relative overflow-hidden bg-gray-900 flex-shrink-0 group/slider cursor-pointer`} 
+                                    onClick={nextImage}>
                                     <div
                                         className="absolute inset-0 w-full h-full transition-all duration-1000 group-hover/slider:scale-[1.05]"
                                         style={{
                                             backgroundImage: `url(${activeImg ? activeImg.url : activePost.img})`,
                                             backgroundSize: 'cover',
-                                            backgroundPosition: viewMode === 'DETAIL' ? `${activeImg.posX}% ${activeImg.posY}%` : 'center'
+                                            backgroundPosition: `${activeImg?.posX || 50}% ${activeImg?.posY || 50}%`
                                         }}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/slider:opacity-100 transition-opacity"></div>
 
-                                    {viewMode === 'LIST' && (
-                                        <div className="absolute inset-0 flex items-end justify-between p-10 opacity-0 group-hover/slider:opacity-100 transition-all transform translate-y-4 group-hover/slider:translate-y-0 text-white pointer-events-none">
-                                            <span className="font-black text-xl tracking-tight">상세 리포트 보기</span>
-                                            <div className="w-12 h-12 bg-[#10b981] rounded-full flex items-center justify-center shadow-2xl ring-2 ring-white/50">
-                                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                    {stageSequence.length > 1 && (
+                                        <div className="absolute top-6 left-6 z-30 pointer-events-none">
+                                            <div className="bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 flex items-center gap-2 shadow-lg">
+                                                <div className="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-pulse"></div>
+                                                <span className="text-white font-black text-[10px] md:text-xs uppercase tracking-tighter">
+                                                    {stage === 'before' ? '작업 전' : stage === 'during' ? '작업 중' : '작업 후'} 
+                                                    {currentDetailImages.length > 1 && ` (${imgIndex + 1}/${currentDetailImages.length})`}
+                                                </span>
                                             </div>
                                         </div>
                                     )}
 
-                                    {viewMode === 'DETAIL' && (
-                                        <div className="absolute top-6 left-6 z-30 pointer-events-none lg:hidden">
-                                            <div className="bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 flex items-center gap-2">
-                                                <div className="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-pulse"></div>
-                                                <span className="text-white font-black text-[10px] uppercase tracking-tighter">사진 클릭 시 단계 전환</span>
-                                            </div>
-                                        </div>
-                                    )}
-                                    {/* 상세 슬라이더 화살표 */}
-                                    {viewMode === 'DETAIL' && currentDetailImages.length > 1 && (
-                                        <React.Fragment>
-                                            <button onClick={() => setImgIndex((i) => (i - 1 + currentDetailImages.length) % currentDetailImages.length)} className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-[#10b981] text-white rounded-full flex items-center justify-center backdrop-blur-md opacity-0 group-hover/slider:opacity-100 transition-all z-20"><svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg></button>
-                                            <button onClick={() => setImgIndex((i) => (i + 1) % currentDetailImages.length)} className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-[#10b981] text-white rounded-full flex items-center justify-center backdrop-blur-md opacity-0 group-hover/slider:opacity-100 transition-all z-20"><svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg></button>
-                                        </React.Fragment>
-                                    )}
+
+                                    {stageSequence.length > 1 && (
+                                         <React.Fragment>
+                                             <button onClick={prevImage} className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-[#10b981] text-white rounded-full flex items-center justify-center backdrop-blur-md opacity-0 group-hover/slider:opacity-100 transition-all z-40">
+                                                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg>
+                                             </button>
+                                             <button onClick={nextImage} className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-[#10b981] text-white rounded-full flex items-center justify-center backdrop-blur-md opacity-0 group-hover/slider:opacity-100 transition-all z-40">
+                                                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg>
+                                             </button>
+                                         </React.Fragment>
+                                     )}
                                 </div>
 
-                                {/* 2. 우측 패널 */}
+                                {/* 오른쪽 정보 패널 */}
                                 <div className="w-full lg:w-[40%] flex flex-col bg-white relative">
                                     <div className="p-10 lg:p-12 flex-grow overflow-y-auto custom-scrollbar active-info-scroll border-b border-gray-50">
-
-                                        <div className={`flex justify-between items-center mb-8 ${viewMode === 'DETAIL' ? 'lg:sticky lg:top-0 bg-white/95 backdrop-blur-sm z-30 py-2 -mx-4 px-4' : ''}`}>
-                                            <div className="flex items-center gap-3">
-                                                <span className="bg-gray-100 text-gray-500 font-extrabold text-[10px] px-3 py-1 rounded-md tracking-widest uppercase">
-                                                    {viewMode === 'LIST' ? 'CASE SUMMARY' : 'DETAILED REPORT'}
-                                                </span>
-                                                {isAdmin && viewMode === 'LIST' && (
-                                                    <button onClick={() => handleDeletePost(activePost.id)} className="text-red-400 hover:text-red-500 transition-colors" title="삭제">
-                                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                                                    </button>
-                                                )}
+                                        
+                                        <div className="flex justify-between items-center mb-8 sticky top-0 bg-white/95 backdrop-blur-sm z-30 py-2 -mx-4 px-4">
+                                            <span className="bg-gray-100 text-gray-500 font-extrabold text-[10px] px-3 py-1 rounded-md tracking-widest uppercase">
+                                                DETAILED REPORT
+                                            </span>
+                                            <div className="flex items-center gap-2">
+                                                <span className="w-2 h-2 bg-[#10b981] rounded-full animate-pulse"></span>
+                                                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Active Insight</span>
                                             </div>
-                                            {viewMode === 'DETAIL' && (
-                                                <button onClick={() => setViewMode('LIST')} className="hidden lg:flex bg-gray-50 text-gray-400 p-2 rounded-full hover:text-gray-900 hover:bg-gray-200 transition-colors items-center pl-4 pr-5 group">
-                                                    <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-                                                    <span className="text-xs font-black">목록으로</span>
-                                                </button>
-                                            )}
                                         </div>
 
-                                        {viewMode === 'DETAIL' && (
-                                            <div className="hidden lg:flex bg-gray-50 p-1.5 rounded-2xl mb-8 sticky top-[60px] z-20 shadow-sm border border-gray-100">
-                                                {['before', 'during', 'after'].map(s => (
-                                                    <button key={s} onClick={() => { setStage(s); setImgIndex(0); }} className={`flex-1 py-3 rounded-xl font-black text-xs transition-all ${stage === s ? 'bg-[#10b981] text-white shadow-lg' : 'text-gray-400 hover:text-gray-600'}`}>
-                                                        {s === 'before' ? '작업 전' : s === 'during' ? '작업 중' : '작업 후'}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        )}
-
-                                        <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-8 leading-tight break-keep">{activePost.title}</h2>
-                                        <div className="w-12 h-1.5 bg-[#10b981] mb-8 rounded-full"></div>
-                                        <p className="text-lg text-gray-600 leading-relaxed font-semibold break-keep whitespace-pre-wrap">{activePost.content}</p>
-                                    </div>
-
-                                    {/* 3. 하단 패널 */}
-                                    <div className="h-40 lg:h-44 bg-gray-50/50 p-6 flex space-x-5 items-center overflow-x-auto custom-scrollbar">
-                                        {viewMode === 'LIST' ? (
-                                            posts.map((post, idx) => (
-                                                <button key={post.id} onClick={() => setActiveIndex(idx)} className={`relative w-28 h-28 lg:w-32 lg:h-32 flex-shrink-0 rounded-2xl overflow-hidden transition-all duration-300 ${activeIndex === idx ? 'ring-4 ring-[#10b981] ring-offset-2 scale-105 z-10' : 'opacity-40 hover:opacity-100 hover:scale-105'}`}>
-                                                    <img src={post.img} className="w-full h-full object-cover" />
-                                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                                    <div className="absolute bottom-2 right-2 w-7 h-7 bg-[#10b981] text-white flex items-center justify-center rounded-full text-[13px] font-black shadow-lg ring-2 ring-white">{idx + 1}</div>
+                                        <div className="flex bg-gray-50 p-1.5 rounded-2xl mb-8 sticky top-[60px] z-20 shadow-sm border border-gray-100">
+                                            {['before', 'during', 'after'].map(s => (
+                                                <button key={s} onClick={() => { setStage(s); setImgIndex(0); }} className={`flex-1 py-3.5 rounded-xl font-black text-[13px] transition-all transform duration-300 ${stage === s ? 'bg-[#10b981] text-white shadow-lg scale-[1.02]' : 'text-gray-400 hover:text-gray-600 active:scale-95'}`}>
+                                                    {s === 'before' ? '작업 전' : s === 'during' ? '작업 중' : '작업 후'}
                                                 </button>
-                                            ))
-                                        ) : (
-                                            <div className="flex space-x-3 w-full h-full">
-                                                {currentDetailImages.length > 0 ? currentDetailImages.map((img, idx) => (
-                                                    <button key={idx} onClick={() => setImgIndex(idx)} className={`relative h-full aspect-square rounded-xl overflow-hidden border-2 transition-all ${imgIndex === idx ? 'border-[#10b981] scale-105 shadow-md' : 'border-transparent opacity-60 hover:opacity-100'}`}>
-                                                        <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${img.url})` }} />
-                                                    </button>
-                                                )) : <div className="text-gray-300 font-bold text-xs w-full text-center py-10">해당 단계의 사진이 없습니다.</div>}
+                                            ))}
+                                        </div>
+
+                                        <div className="flex items-center justify-between mb-4">
+                                            <span className="text-[11px] font-black text-[#10b981] tracking-[0.3em] uppercase opacity-70">SUCCESS STORY</span>
+                                            <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">{activePost.date}</span>
+                                        </div>
+
+                                        <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-8 leading-[1.2] break-keep">{activePost.title}</h2>
+                                        <div className="w-16 h-1.5 bg-[#10b981] mb-10 rounded-full"></div>
+                                        
+                                        <div className="prose prose-sm lg:prose-base text-gray-500 font-bold leading-relaxed whitespace-pre-wrap break-keep active-content-area transition-all duration-700 opacity-100 translate-y-0">
+                                            {activePost.content}
+                                        </div>
+
+
+                                        {isAdmin && (
+                                            <div className="mt-12 pt-8 border-t border-gray-100 flex gap-4">
+                                                <button onClick={() => handleDeletePost(activePost.id)} className="px-6 py-3 border-2 border-red-50 text-red-400 rounded-xl text-xs font-black hover:bg-red-50 transition-all flex items-center gap-2">
+                                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                                    데이터 영구 삭제
+                                                </button>
                                             </div>
                                         )}
+                                    </div>
+                                    
+                                    {/* 하단 썸네일 리스트 */}
+                                    <div className="h-40 lg:h-44 bg-gray-50/50 p-6 flex space-x-5 items-center overflow-x-auto custom-scrollbar border-t border-gray-100">
+                                        {posts.map((post, idx) => (
+                                            <button key={post.id} onClick={() => { setActiveIndex(idx); setStage('after'); setImgIndex(0); }} className={`relative w-28 h-28 lg:w-32 lg:h-32 flex-shrink-0 rounded-2xl overflow-hidden transition-all duration-500 transform hover:translate-y-[-4px] ${activeIndex === idx ? 'ring-[6px] ring-[#10b981] ring-offset-2 scale-105 z-10 shadow-2xl' : 'opacity-40 grayscale-[0.5] hover:opacity-100 hover:grayscale-0'}`}>
+                                                <img src={post.img} className="w-full h-full object-cover" alt={`Case-${idx+1}`} />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                                                <div className="absolute bottom-2 right-2 w-8 h-8 bg-[#10b981] text-white flex items-center justify-center rounded-full text-[13px] font-black shadow-lg ring-2 ring-white animate-bounce-slow">{idx + 1}</div>
+                                            </button>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
                         ) : (
-                            <div className="py-32 flex flex-col items-center justify-center text-gray-400 bg-white rounded-[2.5rem] border-2 border-dashed border-gray-200">
-                                <svg className="w-16 h-16 mb-4 opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                                <p className="text-xl font-bold text-gray-400">등록된 갤러리가 없습니다.</p>
-                                {isAdmin && <button onClick={() => setIsModalOpen(true)} className="mt-6 px-8 py-3 bg-[#10b981] text-white rounded-xl font-bold text-sm hover:bg-[#065f46] transition-colors">첫 번째 갤러리 업로드</button>}
+                            <div className="py-48 flex flex-col items-center justify-center text-gray-300 bg-white rounded-[3rem] border-2 border-dashed border-gray-100 animate-luxury-fade">
+                                <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-6">
+                                    <svg className="w-12 h-12 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                                </div>
+                                <p className="text-xl font-black text-gray-400 tracking-tight">작성된 현장 기록이 없습니다.</p>
+                                <p className="text-sm font-bold text-gray-300 mt-2">첫 번째 성공 사례를 등록해 보세요.</p>
                             </div>
                         )}
 
-                    </div>
-
-                    {/* ─── Portfolio Upload Modal ─────────────────────────────── */}
-                    {isModalOpen && (
-                        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[99999] flex items-center justify-center p-4" onClick={(e) => e.target === e.currentTarget && setIsModalOpen(false)}>
-                            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-luxury-fade">
-                                {/* Modal Header */}
-                                <div className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-gray-100 px-8 py-5 flex items-center justify-between z-10 rounded-t-3xl">
-                                    <div>
-                                        <p className="text-[#10b981] font-black text-[10px] tracking-[0.35em] uppercase mb-1">Portfolio Upload</p>
-                                        <h3 className="text-xl font-black text-gray-900 tracking-tight">새 갤러리 업로드</h3>
-                                    </div>
-                                    <button onClick={() => setIsModalOpen(false)} className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-all flex-shrink-0">
-                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+                        {/* 관리자 업로드 모달 (완벽하게 분리된 위치) */}
+                        {isModalOpen && (
+                            <div className="fixed inset-0 bg-black/80 backdrop-blur-xl z-[9999] flex items-center justify-center p-4 md:p-8 overflow-y-auto" onClick={(e) => e.target === e.currentTarget && setIsModalOpen(false)}>
+                                <div className="bg-white rounded-[2.5rem] shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar relative animate-luxury-fade pointer-events-auto">
+                                    <button onClick={() => setIsModalOpen(false)} className="absolute top-8 right-8 w-12 h-12 flex items-center justify-center rounded-xl bg-gray-100 text-gray-400 hover:text-gray-900 hover:bg-gray-100 transition-all z-50 group">
+                                        <svg className="w-6 h-6 transform group-hover:rotate-90 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" /></svg>
                                     </button>
-                                </div>
 
-                                <form onSubmit={handleUpload} className="p-8 space-y-8">
-                                    {/* Title & Content */}
-                                    <div className="space-y-4">
-                                        <div>
-                                            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">제목 *</label>
-                                            <input
-                                                type="text" required
-                                                value={formData.title}
-                                                onChange={e => setFormData(f => ({ ...f, title: e.target.value }))}
-                                                placeholder="예) [준공청소] 전주 ◯◯아파트 입주 전 클리닝"
-                                                className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all"
-                                            />
+                                    <form onSubmit={handleUpload} className="p-8 md:p-12 space-y-10">
+                                        <div className="text-center pt-4">
+                                            <span className="text-[11px] font-black text-[#10b981] tracking-[0.4em] uppercase mb-4 block">New Portfolio</span>
+                                            <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight">현장 갤러리 등록</h2>
                                         </div>
-                                        <div>
-                                            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">현장 설명</label>
-                                            <textarea
-                                                value={formData.content}
-                                                onChange={e => setFormData(f => ({ ...f, content: e.target.value }))}
-                                                rows="3"
-                                                placeholder="현장 특이사항, 적용 공정, 작업 결과 등을 설명해주세요."
-                                                className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/10 transition-all resize-none"
-                                            />
-                                        </div>
-                                    </div>
 
-                                    {/* Main Thumbnail */}
-                                    <div>
-                                        <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 block">대표 이미지 (썸네일)</label>
-                                        <input type="file" accept="image/*" id="upload-main" className="hidden" onChange={e => handleFileChange(e, 'main')} />
-                                        {filesData.main ? (
-                                            <div className="relative w-full h-48 rounded-2xl overflow-hidden border border-gray-100">
-                                                <img src={filesData.main.url} className="w-full h-full object-cover" alt="thumbnail" />
-                                                <button type="button" onClick={() => setFilesData(p => ({ ...p, main: null }))} className="absolute top-3 right-3 w-8 h-8 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-red-500 transition-colors">
-                                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
-                                                </button>
+                                        <div className="space-y-6">
+                                            <div>
+                                                <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest mb-3 block ml-1">현장 명칭</label>
+                                                <input type="text" value={formData.title} onChange={e => setFormData(p => ({ ...p, title: e.target.value }))} placeholder="예: [준공 청소] 강남구 논현동 프리미엄 아파트" required className="w-full px-6 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-[#10b981] font-bold text-gray-900 outline-none transition-all placeholder-gray-300 shadow-inner" />
                                             </div>
-                                        ) : (
-                                            <label htmlFor="upload-main" className="flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-gray-200 rounded-2xl bg-gray-50 hover:border-[#10b981] hover:bg-[#ecfdf5] transition-all cursor-pointer">
-                                                <svg className="w-8 h-8 text-gray-300 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
-                                                <span className="text-sm font-bold text-gray-400">클릭하여 대표 이미지 선택</span>
-                                            </label>
-                                        )}
-                                    </div>
+                                            <div>
+                                                <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest mb-3 block ml-1">작업 상세 내용</label>
+                                                <textarea value={formData.content} onChange={e => setFormData(p => ({ ...p, content: e.target.value }))} placeholder="현장 특징, 적용된 공법, 고객 피드백 등을 상세히 작성해 주세요." rows="5" className="w-full px-6 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:bg-white focus:border-[#10b981] font-bold text-gray-900 outline-none transition-all placeholder-gray-300 shadow-inner leading-relaxed" />
+                                            </div>
+                                        </div>
 
-                                    {/* Before / During / After */}
-                                    {['before', 'during', 'after'].map(stg => (
-                                        <div key={stg}>
-                                            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 block">
-                                                {stg === 'before' ? '⬛ 작업 전 사진' : stg === 'during' ? '🔧 작업 중 사진' : '✅ 작업 후 사진'}
-                                            </label>
-                                            <input type="file" accept="image/*" multiple id={`upload-${stg}`} className="hidden" onChange={e => handleFileChange(e, stg)} />
-                                            <div className="flex flex-wrap gap-3">
-                                                {filesData[stg].map((f, idx) => (
-                                                    <div key={idx} className="relative w-24 h-24 rounded-xl overflow-hidden border border-gray-100 flex-shrink-0">
-                                                        <img src={f.url} className="w-full h-full object-cover" alt={`${stg}-${idx}`} />
-                                                        <button type="button" onClick={() => setFilesData(p => ({ ...p, [stg]: p[stg].filter((_, i) => i !== idx) }))} className="absolute top-1 right-1 w-5 h-5 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-red-500 transition-colors text-[10px]">
-                                                            ✕
-                                                        </button>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            <div className="space-y-4">
+                                                <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest mb-1 block ml-1">대표 이미지</label>
+                                                <div className="relative group/main">
+                                                    {filesData.main ? (
+                                                        <div className="relative w-full h-48 rounded-2xl overflow-hidden shadow-lg">
+                                                            <img src={filesData.main.url} className="w-full h-full object-cover" alt="Main" />
+                                                            <button type="button" onClick={() => setFilesData(p => ({ ...p, main: null }))} className="absolute top-4 right-4 w-8 h-8 bg-black/50 text-white rounded-xl flex items-center justify-center hover:bg-red-500 transition-all backdrop-blur-md shadow-xl"><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                                                        </div>
+                                                    ) : (
+                                                        <label className="w-full h-48 flex flex-col items-center justify-center border-4 border-dashed border-gray-100 rounded-[2rem] bg-gray-50 hover:bg-[#ecfdf5] hover:border-[#10b981] transition-all cursor-pointer group/label">
+                                                            <input type="file" accept="image/*" className="hidden" onChange={e => handleFileChange(e, 'main')} />
+                                                            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4 group-hover/label:scale-110 transition-transform"><svg className="w-8 h-8 text-[#10b981]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg></div>
+                                                            <span className="text-[13px] font-black text-gray-400 group-hover/label:text-[#10b981]">대표 사진 (필수)</span>
+                                                        </label>
+                                                    )}
+                                                </div>
+                                            </div>
+
+                                            <div className="space-y-6">
+                                                {['before', 'during', 'after'].map(stg => (
+                                                    <div key={stg} className="space-y-3">
+                                                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] flex items-center gap-2">
+                                                            {stg === 'before' ? '작업 전' : stg === 'during' ? '작업 중' : '작업 후'}
+                                                            <span className="text-[#10b981] font-black">{filesData[stg].length}</span>
+                                                        </label>
+                                                        <div className="flex flex-wrap gap-2">
+                                                            {filesData[stg].map((f, idx) => (
+                                                                <div key={idx} className="relative w-16 h-16 rounded-xl overflow-hidden shadow-sm group/thumb">
+                                                                    <img src={f.url} className="w-full h-full object-cover" alt="thumb" />
+                                                                    <button type="button" onClick={() => setFilesData(p => ({ ...p, [stg]: p[stg].filter((_, i) => i !== idx) }))} className="absolute inset-0 bg-red-500/80 text-white flex items-center justify-center opacity-0 group-hover/thumb:opacity-100 transition-opacity"><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
+                                                                </div>
+                                                            ))}
+                                                            <label className="w-16 h-16 flex items-center justify-center border-2 border-dashed border-gray-200 rounded-xl bg-gray-50 hover:bg-[#ecfdf5] hover:border-[#10b981] transition-all cursor-pointer">
+                                                                <input type="file" accept="image/*" multiple className="hidden" onChange={e => handleFileChange(e, stg)} />
+                                                                <svg className="w-5 h-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 4v16m8-8H4" /></svg>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 ))}
-                                                <label htmlFor={`upload-${stg}`} className="w-24 h-24 flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded-xl bg-gray-50 hover:border-[#10b981] hover:bg-[#ecfdf5] transition-all cursor-pointer flex-shrink-0">
-                                                    <svg className="w-5 h-5 text-gray-300 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4" /></svg>
-                                                    <span className="text-[9px] font-bold text-gray-400">추가</span>
-                                                </label>
                                             </div>
                                         </div>
-                                    ))}
 
-                                    {/* Submit */}
-                                    <div className="pt-2">
-                                        <button type="submit" disabled={isUploading || !formData.title.trim()} className="w-full py-4 rounded-xl glossy-green text-white font-black text-sm tracking-wide shadow-lg hover:shadow-green-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
-                                            {isUploading ? (
-                                                <React.Fragment>
-                                                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
-                                                    저장 중...
-                                                </React.Fragment>
-                                            ) : (
-                                                <React.Fragment>
-                                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
-                                                    갤러리 등록하기
-                                                </React.Fragment>
-                                            )}
-                                        </button>
-                                        <p className="text-center text-[10px] text-gray-400 mt-3 font-medium">이미지는 자동으로 압축되어 저장됩니다 (최대 ~5MB)</p>
-                                    </div>
-                                </form>
+                                        <div className="pt-6">
+                                            <button type="submit" disabled={isUploading || !formData.title.trim() || !filesData.main} className="w-full py-5 rounded-[1.5rem] bg-[#065f46] text-white font-black text-base shadow-2xl hover:bg-[#10b981] hover:scale-[1.02] transform transition-all active:scale-[0.98] disabled:opacity-30 disabled:grayscale disabled:cursor-not-allowed flex items-center justify-center gap-3">
+                                                {isUploading ? (
+                                                    <React.Fragment>
+                                                        <svg className="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                                                        서버에 고화질 이미지 저장 중...
+                                                    </React.Fragment>
+                                                ) : (
+                                                    <React.Fragment>
+                                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
+                                                        포트폴리오 발행하기
+                                                    </React.Fragment>
+                                                )}
+                                            </button>
+                                            <p className="text-center text-[11px] text-gray-400 mt-6 font-bold uppercase tracking-widest opacity-60">High performance storage powered by IndexedDB & REST API</p>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </div>
             );
         };
-        // --- END UNIVERSAL FLOATING BACK BUTTON ---
-
-        // --- END PORTFOLIO UI ENHANCEMENT ---
-
-        // --- END CLEAN PORTFOLIO UI ---
-
-        // --- END TWO-STEP PORTFOLIO LOGIC ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         const AdminLoginModal = ({ onClose, onSuccess }) => {
             const [pw, setPw] = React.useState('');
             const [error, setError] = React.useState(false);
